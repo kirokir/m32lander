@@ -1,1 +1,522 @@
-m
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>M32 Dental Centre — Clear Aligners &amp; Advanced Dental Care</title>
+<meta name="description" content="M32 Dental Centre offers advanced clear aligner treatment and premium dental care, planned around your comfort, confidence, and professional lifestyle.">
+<meta name="theme-color" content="#0B1F3A">
+
+<!-- Open Graph -->
+<meta property="og:title" content="M32 Dental Centre — Clear Aligners & Advanced Dental Care">
+<meta property="og:description" content="Advanced nearly invisible aligner solutions designed around comfort, confidence, and your lifestyle.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div id="preload" class="preload" aria-hidden="true">
+  <svg class="preload-arc" viewBox="0 0 120 60" width="88" height="44">
+    <path d="M4 40 C 30 4, 90 4, 116 40" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+</div>
+
+<!-- Scroll progress -->
+<div class="scroll-progress" aria-hidden="true"><div id="scrollBar" class="scroll-progress__bar"></div></div>
+
+<!-- HEADER -->
+<header class="header" id="siteHeader">
+  <div class="header__inner">
+    <a href="#home" class="brand" aria-label="M32 Dental Centre, home">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" width="34" height="34"><path d="M4 26 C 10 8, 30 8, 36 26" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/></svg>
+      </span>
+      <span class="brand__text">M32<span class="brand__text--light"> Dental Centre</span></span>
+    </a>
+
+    <nav class="nav" id="primaryNav" aria-label="Primary">
+      <a href="#home">Home</a>
+      <a href="#aligners">Clear Aligners</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#technology">Technology</a>
+      <a href="#process">Process</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a class="btn btn--primary btn--sm header__cta" id="headerCta" href="#" data-whatsapp>
+      Book Appointment
+    </a>
+
+    <button class="hamburger" id="hamburgerBtn" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer__backdrop" data-close-drawer></div>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="drawer__top">
+      <span class="brand__text">M32<span class="brand__text--light"> Dental Centre</span></span>
+      <button class="drawer__close" data-close-drawer aria-label="Close menu">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <nav class="drawer__nav" aria-label="Mobile">
+      <a href="#home" data-close-drawer>Home</a>
+      <a href="#aligners" data-close-drawer>Clear Aligners</a>
+      <a href="#benefits" data-close-drawer>Benefits</a>
+      <a href="#technology" data-close-drawer>Technology</a>
+      <a href="#process" data-close-drawer>Process</a>
+      <a href="#reviews" data-close-drawer>Reviews</a>
+      <a href="#contact" data-close-drawer>Contact</a>
+    </nav>
+    <a class="btn btn--primary btn--block" href="#" data-whatsapp>Book Consultation</a>
+  </div>
+</div>
+
+<main id="home">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="heroHeading">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="hero__inner">
+
+      <p class="eyebrow reveal">Clear Aligner Specialists</p>
+      <h1 id="heroHeading" class="hero__headline reveal">Transform your smile discreetly with clear aligners</h1>
+      <p class="hero__subtitle reveal">Advanced nearly invisible aligner solutions designed around comfort, confidence, and your lifestyle.</p>
+
+      <div class="hero__actions reveal">
+        <a href="#" class="btn btn--primary btn--lg ripple" data-whatsapp>
+          Book Consultation
+          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#aligners" class="btn btn--ghost btn--lg">Explore Treatment</a>
+      </div>
+
+      <div class="hero__stage reveal" aria-hidden="true">
+        <div class="hero__card hero__card--photo img-placeholder" role="img" aria-label="Confident young professional smiling after clear aligner treatment">
+          <svg viewBox="0 0 24 24" width="46" height="46"><path d="M12 3c-4 0-7 3-7 7 0 3 2 5 3 7l4 4 4-4c1-2 3-4 3-7 0-4-3-7-7-7z" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="10" r="2.4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+          <span class="img-placeholder__tag">hero-smile.jpg</span>
+        </div>
+
+        <div class="floating-badge floating-badge--1">
+          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>FDA-grade material</span>
+        </div>
+        <div class="floating-badge floating-badge--2">
+          <svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Wear 20–22 hrs / day</span>
+        </div>
+
+        <div class="hero__card hero__card--aligner img-placeholder img-placeholder--dark" role="img" aria-label="Close up view of a clear dental aligner tray">
+          <svg viewBox="0 0 64 32" width="72" height="36"><path d="M4 20 C 10 4, 54 4, 60 20 C 54 26, 10 26, 4 20 Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 20 C 15 12, 49 12, 54 20" fill="none" stroke="currentColor" stroke-width="1" opacity="0.6"/></svg>
+          <span class="img-placeholder__tag">clear-aligner.png</span>
+        </div>
+      </div>
+    </div>
+    <div class="section-divider" aria-hidden="true">
+      <svg viewBox="0 0 400 24" preserveAspectRatio="none"><path d="M0 20 C 100 -4, 300 -4, 400 20" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+    </div>
+  </section>
+
+  <!-- TRUST SECTION -->
+  <section class="section trust" aria-labelledby="trustHeading">
+    <div class="container">
+      <h2 id="trustHeading" class="visually-hidden">Why patients trust M32 Dental Centre</h2>
+      <div class="trust__grid">
+        <div class="trust__card reveal">
+          <span class="trust__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <h3>Expert dental care</h3>
+          <p>Treatment planned and supervised by experienced dental specialists.</p>
+        </div>
+        <div class="trust__card reveal">
+          <span class="trust__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26"><rect x="4" y="4" width="16" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 10h16M10 4v16" stroke="currentColor" stroke-width="1.2"/></svg>
+          </span>
+          <h3>Advanced technology</h3>
+          <p>Digital scanning and precision planning replace guesswork.</p>
+        </div>
+        <div class="trust__card reveal">
+          <span class="trust__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26"><circle cx="12" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c1.5-4 4-5.5 7-5.5S18.5 16 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </span>
+          <h3>Personalised planning</h3>
+          <p>Every aligner sequence is mapped to your dental structure alone.</p>
+        </div>
+        <div class="trust__card reveal">
+          <span class="trust__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26"><path d="M12 21s-7-4.4-9.5-9C1 8 3 4 7 4c2.2 0 3.8 1.2 5 3 1.2-1.8 2.8-3 5-3 4 0 6 4 4.5 8-2.5 4.6-9.5 9-9.5 9z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          </span>
+          <h3>Comfort-focused</h3>
+          <p>Smooth edges and a gradual fit built around daily comfort.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLEAR ALIGNERS EXPLANATION -->
+  <section class="section aligners" id="aligners" aria-labelledby="alignersHeading">
+    <div class="container aligners__grid">
+      <div class="aligners__copy reveal">
+        <p class="eyebrow">The M32 approach</p>
+        <h2 id="alignersHeading">Modern alignment without traditional braces</h2>
+        <p class="lead">Clear aligners move teeth in small, planned stages — without metal wires or brackets — so treatment fits into your working life rather than around it.</p>
+        <ul class="check-list">
+          <li><svg viewBox="0 0 24 24" width="18" height="18"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Transparent, low-visibility appearance</li>
+          <li><svg viewBox="0 0 24 24" width="18" height="18"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Removable for eating, brushing and important meetings</li>
+          <li><svg viewBox="0 0 24 24" width="18" height="18"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Built around your daily routine, not the other way round</li>
+          <li><svg viewBox="0 0 24 24" width="18" height="18"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Digitally planned from the very first scan</li>
+        </ul>
+      </div>
+      <div class="aligners__visual reveal" aria-hidden="true">
+        <div class="aligner-3d">
+          <svg viewBox="0 0 220 160" width="100%" height="100%">
+            <ellipse cx="110" cy="120" rx="86" ry="18" fill="var(--cyan)" opacity="0.12"/>
+            <path d="M30 70 C 40 20, 180 20, 190 70 C 180 100, 40 100, 30 70 Z" fill="none" stroke="var(--navy)" stroke-width="2"/>
+            <path d="M42 68 C 55 40, 165 40, 178 68" fill="none" stroke="var(--cyan-strong)" stroke-width="1.4" opacity="0.8"/>
+            <path d="M34 78 C 45 106, 175 106, 186 78" fill="none" stroke="var(--navy)" stroke-width="1.4" opacity="0.5"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider section-divider--soft" aria-hidden="true">
+    <svg viewBox="0 0 400 24" preserveAspectRatio="none"><path d="M0 4 C 100 28, 300 28, 400 4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+  </div>
+
+  <!-- BENEFITS SECTION -->
+  <section class="section benefits" id="benefits" aria-labelledby="benefitsHeading">
+    <div class="container">
+      <p class="eyebrow center">Why patients choose M32</p>
+      <h2 id="benefitsHeading" class="center">Built for how professionals actually live</h2>
+
+      <div class="benefits__grid">
+        <article class="benefit-card reveal">
+          <span class="benefit-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
+          <h3>Nearly invisible design</h3>
+          <p>A discreet, low-profile appearance suited to client meetings and daily life.</p>
+        </article>
+        <article class="benefit-card reveal">
+          <span class="benefit-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+          <h3>Comfortable daily routine</h3>
+          <p>Smooth aligner edges, minimal irritation, easy to remove and refit.</p>
+        </article>
+        <article class="benefit-card reveal">
+          <span class="benefit-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><rect x="3" y="5" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 9h8M8 13h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+          <h3>Designed for professionals</h3>
+          <p>Review appointments scheduled around working hours and travel.</p>
+        </article>
+        <article class="benefit-card reveal">
+          <span class="benefit-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 18l5-5 4 3 7-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Advanced digital planning</h3>
+          <p>A projected treatment sequence built from your own 3D scan data.</p>
+        </article>
+        <article class="benefit-card reveal">
+          <span class="benefit-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
+          <h3>Expert supervision</h3>
+          <p>Progress checked at every stage by your dental specialist.</p>
+        </article>
+        <article class="benefit-card reveal">
+          <span class="benefit-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 21s-7-4.4-9.5-9C1 8 3 4 7 4c2.2 0 3.8 1.2 5 3 1.2-1.8 2.8-3 5-3 4 0 6 4 4.5 8-2.5 4.6-9.5 9-9.5 9z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
+          <h3>Confidence throughout</h3>
+          <p>Clear check-ins so you always know where your treatment stands.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER STYLE -->
+  <section class="section transform" aria-labelledby="transformHeading">
+    <div class="container transform__grid">
+      <div class="transform__visual reveal" aria-hidden="true">
+        <div class="compare">
+          <div class="compare__pane img-placeholder">
+            <span class="compare__label">Before</span>
+            <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 14c1-2 2-3 4-3s3 1 4 3" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/><circle cx="9" cy="9" r="1" fill="currentColor"/><circle cx="15" cy="9" r="1" fill="currentColor"/></svg>
+          </div>
+          <div class="compare__pane img-placeholder img-placeholder--dark">
+            <span class="compare__label">After</span>
+            <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 10c1 2 2 3 4 3s3-1 4-3" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/><circle cx="9" cy="9" r="1" fill="currentColor"/><circle cx="15" cy="9" r="1" fill="currentColor"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="transform__copy reveal">
+        <p class="eyebrow">A note on outcomes</p>
+        <h2 id="transformHeading">Every smile journey is unique</h2>
+        <p class="lead">Our specialists create personalised treatment plans based on your dental needs. Illustrative visuals only — individual results vary by case.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNOLOGY SECTION (dark) -->
+  <section class="section technology" id="technology" aria-labelledby="techHeading">
+    <div class="tech__glow" aria-hidden="true"></div>
+    <div class="container">
+      <p class="eyebrow eyebrow--light center">Inside the clinic</p>
+      <h2 id="techHeading" class="center light">Precision-driven dental workflow</h2>
+
+      <div class="tech__grid">
+        <div class="tech__visual reveal img-placeholder img-placeholder--dark" role="img" aria-label="Advanced dental scanning technology in use at the clinic">
+          <svg viewBox="0 0 24 24" width="48" height="48"><rect x="3" y="4" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7 20h10M12 17v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M7 9l3 3 7-6" stroke="var(--cyan)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="img-placeholder__tag">technology.jpg</span>
+        </div>
+        <div class="tech__list">
+          <div class="tech__item reveal">
+            <span class="tech__num">01</span>
+            <div>
+              <h3>Digital smile assessment</h3>
+              <p>A full picture of your bite and alignment before any decision is made.</p>
+            </div>
+          </div>
+          <div class="tech__item reveal">
+            <span class="tech__num">02</span>
+            <div>
+              <h3>Advanced scanning technology</h3>
+              <p>Intraoral scanning replaces uncomfortable impressions.</p>
+            </div>
+          </div>
+          <div class="tech__item reveal">
+            <span class="tech__num">03</span>
+            <div>
+              <h3>Precision treatment planning</h3>
+              <p>Tooth movement mapped stage by stage before treatment starts.</p>
+            </div>
+          </div>
+          <div class="tech__item reveal">
+            <span class="tech__num">04</span>
+            <div>
+              <h3>Modern dental workflow</h3>
+              <p>Fewer chair visits, faster reviews, clearer communication.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TREATMENT JOURNEY -->
+  <section class="section process" id="process" aria-labelledby="processHeading">
+    <div class="container">
+      <p class="eyebrow center">Treatment journey</p>
+      <h2 id="processHeading" class="center">Four stages, clearly explained</h2>
+
+      <ol class="timeline">
+        <li class="timeline__item reveal">
+          <span class="timeline__arc" aria-hidden="true"><svg viewBox="0 0 40 20" width="40" height="20"><path d="M2 16 C 10 2, 30 2, 38 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span>
+          <h3>Consultation</h3>
+          <p>Discuss goals and dental history with your specialist.</p>
+        </li>
+        <li class="timeline__item reveal">
+          <span class="timeline__arc" aria-hidden="true"><svg viewBox="0 0 40 20" width="40" height="20"><path d="M2 16 C 10 2, 30 2, 38 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span>
+          <h3>Digital assessment</h3>
+          <p>A full scan builds an accurate 3D model of your teeth.</p>
+        </li>
+        <li class="timeline__item reveal">
+          <span class="timeline__arc" aria-hidden="true"><svg viewBox="0 0 40 20" width="40" height="20"><path d="M2 16 C 10 2, 30 2, 38 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span>
+          <h3>Personalised aligner plan</h3>
+          <p>A staged sequence is designed specifically for your case.</p>
+        </li>
+        <li class="timeline__item reveal">
+          <span class="timeline__arc" aria-hidden="true"><svg viewBox="0 0 40 20" width="40" height="20"><path d="M2 16 C 10 2, 30 2, 38 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span>
+          <h3>Progress reviews</h3>
+          <p>Regular check-ins track movement and adjust as needed.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- DOCTOR SECTION -->
+  <section class="section experts" aria-labelledby="expertsHeading">
+    <div class="container">
+      <p class="eyebrow center">Your treatment team</p>
+      <h2 id="expertsHeading" class="center">Specialists who plan every stage</h2>
+
+      <div class="experts__grid">
+        <article class="expert-card reveal">
+          <div class="expert-card__photo img-placeholder" role="img" aria-label="Portrait of a senior dental consultant at M32 Dental Centre">
+            <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="9" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c1.5-4.5 5-6 8-6s6.5 1.5 8 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="img-placeholder__tag">doctor.jpg</span>
+          </div>
+          <h3>Lead Dental Consultant</h3>
+          <p class="expert-card__meta">15+ years in clinical practice</p>
+          <p>Specialisation: Clear aligner therapy &amp; cosmetic dentistry</p>
+          <p class="expert-card__note">Patient-first treatment planning, at every visit.</p>
+        </article>
+
+        <article class="expert-card reveal">
+          <div class="expert-card__photo img-placeholder" role="img" aria-label="Portrait of a dental technology specialist at M32 Dental Centre">
+            <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="9" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c1.5-4.5 5-6 8-6s6.5 1.5 8 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="img-placeholder__tag">doctor-2.jpg</span>
+          </div>
+          <h3>Digital Treatment Planner</h3>
+          <p class="expert-card__meta">10+ years in digital dentistry</p>
+          <p>Specialisation: 3D scanning &amp; precision aligner design</p>
+          <p class="expert-card__note">Translates every scan into a clear, staged plan.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section reviews" id="reviews" aria-labelledby="reviewsHeading">
+    <div class="container">
+      <p class="eyebrow center">Patient experiences</p>
+      <h2 id="reviewsHeading" class="center">What patients say about treatment</h2>
+
+      <div class="reviews__track" tabindex="0" aria-label="Patient testimonials, scrollable">
+        <article class="review-card reveal">
+          <div class="review-card__stars" aria-hidden="true">★★★★★</div>
+          <p>"The consultation was thorough and I always knew what stage I was at. The aligners fit easily into my work schedule."</p>
+          <p class="review-card__author">— Patient, working professional</p>
+        </article>
+        <article class="review-card reveal">
+          <div class="review-card__stars" aria-hidden="true">★★★★★</div>
+          <p>"Appreciated how the team explained the digital scan and walked me through the full plan before starting."</p>
+          <p class="review-card__author">— Patient, marketing lead</p>
+        </article>
+        <article class="review-card reveal">
+          <div class="review-card__stars" aria-hidden="true">★★★★★</div>
+          <p>"Review visits were quick and clearly explained. Comfortable experience from start to finish."</p>
+          <p class="review-card__author">— Patient, software engineer</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq" aria-labelledby="faqHeading">
+    <div class="container container--narrow">
+      <p class="eyebrow center">Common questions</p>
+      <h2 id="faqHeading" class="center">Frequently asked questions</h2>
+
+      <div class="accordion" id="accordion">
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span>Are clear aligners visible?</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" class="accordion__chevron"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="accordion__panel">
+            <p>Clear aligners are made from transparent medical-grade material, making them far less noticeable than traditional braces in daily conversation.</p>
+          </div>
+        </div>
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span>Are aligners comfortable?</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" class="accordion__chevron"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="accordion__panel">
+            <p>Most patients adapt within the first few days of each new tray. Edges are smooth and the fit is planned to minimise irritation.</p>
+          </div>
+        </div>
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span>Who can choose clear aligners?</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" class="accordion__chevron"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="accordion__panel">
+            <p>Suitability depends on your dental case. A consultation and digital assessment will confirm whether aligners are right for you.</p>
+          </div>
+        </div>
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span>How do I start?</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" class="accordion__chevron"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="accordion__panel">
+            <p>Book a consultation through WhatsApp or the contact section below. Our team will schedule your first visit and scan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section final-cta" id="contact" aria-labelledby="finalCtaHeading">
+    <div class="final-cta__glow" aria-hidden="true"></div>
+    <div class="container center">
+      <span class="final-cta__arc" aria-hidden="true">
+        <svg viewBox="0 0 120 60" width="90" height="45"><path d="M4 40 C 30 4, 90 4, 116 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+      </span>
+      <h2 id="finalCtaHeading" class="light">Begin your smile journey with M32 Dental Centre</h2>
+      <p class="final-cta__sub">Book a consultation and receive a personalised aligner plan built around your case.</p>
+      <a href="#" class="btn btn--primary btn--lg btn--elevated ripple" data-whatsapp>Book Appointment</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <span class="brand__text">M32<span class="brand__text--light"> Dental Centre</span></span>
+      <p>Advanced clear aligner and dental care, planned around your case.</p>
+    </div>
+    <div class="footer__col">
+      <h3>Quick Links</h3>
+      <a href="#home">Home</a>
+      <a href="#aligners">Clear Aligners</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#process">Process</a>
+    </div>
+    <div class="footer__col">
+      <h3>Services</h3>
+      <a href="#aligners">Clear Aligners</a>
+      <a href="#technology">Digital Scanning</a>
+      <a href="#process">Treatment Planning</a>
+      <a href="#reviews">Patient Reviews</a>
+    </div>
+    <div class="footer__col">
+      <h3>Contact</h3>
+      <a href="tel:+919947960606">+91 99479 60606</a>
+      <a href="#" data-whatsapp>Chat on WhatsApp</a>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p>© <span id="year"></span> M32 Dental Centre. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="#" class="whatsapp-fab ripple" data-whatsapp aria-label="Book on WhatsApp">
+  <svg viewBox="0 0 24 24" width="26" height="26"><path d="M20 12a8 8 0 1 1-3.8-6.8L20 4l-1.1 3.9A7.9 7.9 0 0 1 20 12z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 9.5c.3 2.4 2.6 4.7 5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+</a>
+
+<!-- BOTTOM MOBILE NAV -->
+<nav class="bottom-nav" aria-label="Mobile section navigation">
+  <a href="#home" class="bottom-nav__item is-active" data-section="home">
+    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1v-9z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    <span>Home</span>
+  </a>
+  <a href="#aligners" class="bottom-nav__item" data-section="aligners">
+    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M4 12c1-4 4-6 8-6s7 2 8 6c-1 4-4 6-8 6s-7-2-8-6z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+    <span>Aligners</span>
+  </a>
+  <a href="#" class="bottom-nav__item bottom-nav__item--cta" data-whatsapp aria-label="Book appointment">
+    <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+  </a>
+  <a href="#process" class="bottom-nav__item" data-section="process">
+    <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l4 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <span>Process</span>
+  </a>
+  <a href="#contact" class="bottom-nav__item" data-section="contact">
+    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+    <span>Contact</span>
+  </a>
+</nav>
+
+<script src="script.js"></script>
+</body>
+</html>

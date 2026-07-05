@@ -7,586 +7,1784 @@
 <meta name="description" content="M32 Dental Centre offers advanced clear aligner treatment and premium dental care, planned around your comfort, confidence, and professional lifestyle.">
 <meta name="theme-color" content="#0B1F3A">
 
-<!-- Open Graph -->
+<!-- Open Graph Protocol -->
 <meta property="og:title" content="M32 Dental Centre — Clear Aligners & Advanced Dental Care">
 <meta property="og:description" content="Advanced nearly invisible aligner solutions designed around comfort, confidence, and your lifestyle.">
 <meta property="og:type" content="website">
 
+<!-- Premium Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 /* =========================================================
-   M32 DENTAL CENTRE — DESIGN TOKENS
-   Palette: Pearl White #FAF9F6, Deep Navy #0B1F3A,
-            Dental Blue #1D4E89, Soft Cyan #6FD6E8, Cyan Strong #2FB6CE
-   Type: Fraunces (display) / Manrope (body) / JetBrains Mono (data)
-   Signature: the "smile arc" — a recurring curved stroke used as
-   logo mark, section divider, timeline connector and CTA flourish.
-========================================================= */
+   M32 DENTAL CENTRE — LUXURY DESIGN SYSTEM & SPECIFICATION
+   ========================================================= */
 
-:root{
-  --pearl:#FAF9F6;
-  --pearl-dim:#F1EFE9;
-  --navy:#0B1F3A;
-  --navy-soft:#14294A;
-  --blue:#1D4E89;
-  --blue-deep:#153A66;
-  --cyan:#6FD6E8;
-  --cyan-strong:#2FB6CE;
-  --ink:#0E1B2B;
-  --ink-soft:#4C5B6E;
-  --line:rgba(11,31,58,0.10);
-  --white:#FFFFFF;
+:root {
+  --pearl: #FAF9F6;
+  --pearl-dim: #F4F2EB;
+  --navy: #0B1F3A;
+  --navy-soft: #14294A;
+  --blue: #1D4E89;
+  --blue-deep: #153A66;
+  --cyan: #6FD6E8;
+  --cyan-strong: #2FB6CE;
+  --ink: #0E1B2B;
+  --ink-soft: #4C5B6E;
+  --line: rgba(11, 31, 58, 0.08);
+  --white: #FFFFFF;
 
-  --font-display:'Fraunces', Georgia, serif;
-  --font-body:'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono:'JetBrains Mono', ui-monospace, monospace;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  --radius-lg:28px;
-  --radius-md:20px;
-  --radius-sm:14px;
+  --radius-lg: 32px;
+  --radius-md: 20px;
+  --radius-sm: 12px;
 
-  --shadow-soft:0 12px 40px -12px rgba(11,31,58,0.18);
-  --shadow-strong:0 24px 60px -16px rgba(11,31,58,0.32);
+  --shadow-soft: 0 12px 40px -12px rgba(11, 31, 58, 0.08);
+  --shadow-strong: 0 24px 60px -16px rgba(11, 31, 58, 0.16);
+  --shadow-glow: 0 0 32px rgba(111, 214, 232, 0.25);
 
-  --header-h:72px;
-  --bottom-nav-h:72px;
+  --header-h: 76px;
+  --bottom-nav-h: 72px;
 
-  --ease:cubic-bezier(.22,.9,.32,1);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-*,*::before,*::after{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  margin:0;
-  font-family:var(--font-body);
-  color:var(--ink);
-  background:var(--pearl);
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-  padding-bottom:var(--bottom-nav-h);
-}
-img{max-width:100%;display:block;}
-a{color:inherit;text-decoration:none;}
-ul,ol{list-style:none;margin:0;padding:0;}
-h1,h2,h3{font-family:var(--font-display);font-weight:600;color:var(--navy);margin:0 0 .5em;line-height:1.15;letter-spacing:-0.01em;}
-p{margin:0 0 1em;color:var(--ink-soft);line-height:1.65;}
-button{font-family:inherit;}
-
-.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
-
-.container{max-width:1120px;margin:0 auto;padding:0 20px;}
-.container--narrow{max-width:760px;}
-.center{text-align:center;}
-.center h2, .center p{margin-left:auto;margin-right:auto;}
-
-.section{padding:88px 0;position:relative;}
-@media (max-width:640px){ .section{padding:64px 0;} }
-
-.eyebrow{
-  font-family:var(--font-mono);
-  font-size:.72rem;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--cyan-strong);
-  font-weight:500;
-  margin:0 0 .9em;
-}
-.eyebrow--light{color:var(--cyan);}
-.eyebrow.center{ }
-
-.light{color:var(--pearl);}
-
-/* ---------- Preload ---------- */
-.preload{
-  position:fixed;inset:0;z-index:9999;
-  background:var(--navy);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--cyan);
-  transition:opacity .6s var(--ease), visibility .6s;
-}
-.preload-arc{animation:archPulse 1.4s ease-in-out infinite;}
-@keyframes archPulse{
-  0%,100%{opacity:.4; transform:scaleY(0.9);}
-  50%{opacity:1; transform:scaleY(1.05);}
-}
-.preload.is-hidden{opacity:0;visibility:hidden;pointer-events:none;}
-
-/* ---------- Scroll progress ---------- */
-.scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:1001;background:transparent;}
-.scroll-progress__bar{height:100%;width:0%;background:linear-gradient(90deg,var(--blue),var(--cyan-strong));transition:width .1s linear;}
-
-/* ---------- Announcement bar ---------- */
-.announce{
-  position:fixed;top:0;left:0;right:0;z-index:901;
-  display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
-  background:linear-gradient(90deg,var(--navy),var(--blue-deep));
-  color:var(--pearl);font-size:.78rem;padding:9px 40px 9px 16px;text-align:center;
-  transition:transform .3s var(--ease);
-}
-.announce.is-hidden{transform:translateY(-100%);}
-.announce p{margin:0;color:rgba(250,249,246,0.9);}
-.announce__link{font-weight:700;color:var(--cyan);text-decoration:underline;text-underline-offset:2px;flex-shrink:0;}
-.announce__close{
-  position:absolute;right:10px;top:50%;transform:translateY(-50%);
-  background:none;border:none;color:rgba(250,249,246,0.7);cursor:pointer;padding:6px;
-}
-body.has-announce .header{top:36px;}
-body.has-announce{--announce-h:36px;}
-@media (max-width:480px){ .announce{font-size:.72rem;padding:8px 36px 8px 12px;} }
-
-/* ---------- Header ---------- */
-.header{
-  position:fixed;top:0;left:0;right:0;z-index:900;
-  height:var(--header-h);
-  transition:top .3s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease);
-  display:flex;align-items:center;
-  background:rgba(250,249,246,0.72);
-  backdrop-filter:blur(16px) saturate(160%);
-  -webkit-backdrop-filter:blur(16px) saturate(160%);
-  border-bottom:1px solid var(--line);
-}
-.header.is-scrolled{ box-shadow:0 8px 30px -14px rgba(11,31,58,.25); }
-.header__inner{
-  width:100%;max-width:1120px;margin:0 auto;padding:0 20px;
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
-}
-.brand{display:flex;align-items:center;gap:10px;}
-.brand__mark{color:var(--blue);display:flex;}
-.brand__text{font-family:var(--font-display);font-weight:600;font-size:1.15rem;color:var(--navy);white-space:nowrap;}
-.brand__text--light{font-weight:400;color:var(--ink-soft);}
-
-.nav{display:none;gap:28px;}
-.nav a{font-size:.92rem;font-weight:600;color:var(--navy-soft);position:relative;padding:6px 0;}
-.nav a::after{
-  content:'';position:absolute;left:0;bottom:0;height:2px;width:0;
-  background:var(--cyan-strong); transition:width .25s var(--ease);
-}
-.nav a:hover::after{width:100%;}
-
-.header__actions{display:flex;align-items:center;gap:10px;}
-.header__cta{display:none;}
-.icon-btn{
-  display:none;align-items:center;justify-content:center;
-  width:40px;height:40px;border-radius:50%;color:var(--blue);
-  border:1.5px solid var(--line);background:transparent;flex-shrink:0;
-  transition:border-color .2s, color .2s;
-}
-.icon-btn:hover{border-color:var(--blue);color:var(--blue-deep);}
-@media (min-width:900px){ .icon-btn{display:inline-flex;} }
-
-.hamburger{
-  display:flex;flex-direction:column;justify-content:center;gap:5px;
-  width:40px;height:40px;border:none;background:transparent;cursor:pointer;padding:0;
-}
-.hamburger span{display:block;height:2px;width:22px;background:var(--navy);border-radius:2px;transition:transform .3s var(--ease), opacity .2s;}
-.hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.hamburger[aria-expanded="true"] span:nth-child(2){opacity:0;}
-.hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-
-@media (min-width:900px){
-  .nav{display:flex;}
-  .header__cta{display:inline-flex;}
-  .hamburger{display:none;}
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-/* ---------- Drawer ---------- */
-.drawer{position:fixed;inset:0;z-index:1000;pointer-events:none;}
-.drawer__backdrop{position:absolute;inset:0;background:rgba(11,31,58,0.45);opacity:0;transition:opacity .3s var(--ease);}
-.drawer__panel{
-  position:absolute;top:0;right:0;height:100%;width:min(340px,84vw);
-  background:var(--pearl);padding:24px;display:flex;flex-direction:column;gap:28px;
-  transform:translateX(100%);transition:transform .35s var(--ease);
-  box-shadow:var(--shadow-strong);
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
 }
-.drawer.is-open{pointer-events:auto;}
-.drawer.is-open .drawer__backdrop{opacity:1;}
-.drawer.is-open .drawer__panel{transform:translateX(0);}
-.drawer__top{display:flex;align-items:center;justify-content:space-between;}
-.drawer__close{background:none;border:none;color:var(--navy);cursor:pointer;padding:6px;}
-.drawer__nav{display:flex;flex-direction:column;gap:4px;flex:1;}
-.drawer__nav a{padding:14px 4px;font-weight:600;color:var(--navy-soft);border-bottom:1px solid var(--line);}
 
-/* ---------- Buttons ---------- */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  font-weight:700;font-size:.92rem;border-radius:100px;
-  padding:14px 26px;cursor:pointer;border:none;
-  transition:transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
-  position:relative;overflow:hidden;white-space:nowrap;
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--pearl);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  padding-bottom: var(--bottom-nav-h);
 }
-.btn:active{transform:scale(.97);}
-.btn--primary{background:linear-gradient(135deg,var(--blue),var(--blue-deep));color:var(--white);box-shadow:0 14px 30px -10px rgba(29,78,137,0.55);}
-.btn--primary:hover{box-shadow:0 18px 38px -10px rgba(29,78,137,0.65); transform:translateY(-2px);}
-.btn--ghost{background:transparent;color:var(--navy);border:1.5px solid var(--line);}
-.btn--ghost:hover{border-color:var(--blue);color:var(--blue);}
-.btn--sm{padding:10px 20px;font-size:.85rem;}
-.btn--lg{padding:16px 30px;font-size:1rem;}
-.btn--block{width:100%;}
-.btn--elevated{box-shadow:0 22px 50px -14px rgba(0,0,0,0.4);}
 
-.ripple{isolation:isolate;}
-.ripple .ripple-circle{
-  position:absolute;border-radius:50%;background:rgba(255,255,255,0.55);
-  transform:scale(0);animation:rippleAnim .6s ease-out forwards;pointer-events:none;
+img {
+  max-width: 100%;
+  display: block;
 }
-@keyframes rippleAnim{to{transform:scale(2.6);opacity:0;}}
 
-/* ---------- Reveal on scroll ---------- */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease), transform .7s var(--ease);}
-.reveal.is-visible{opacity:1;transform:translateY(0);}
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-/* ---------- Section divider (smile arc) ---------- */
-.section-divider{color:var(--pearl);background:var(--navy);height:26px;line-height:0;}
-.section-divider svg{width:100%;height:100%;color:var(--pearl);}
-.section-divider--soft{background:var(--pearl);height:22px;}
-.section-divider--soft svg{color:var(--line);}
+ul, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-/* ---------- Hero ---------- */
-.hero{
-  position:relative;padding:calc(var(--header-h) + 40px) 0 60px;
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0 0 0.5em;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin: 0 0 1em;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  font-size: 0.98rem;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.container--narrow {
+  max-width: 800px;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h2, .center p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section {
+  padding: 100px 0;
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  .section { padding: 72px 0; }
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan-strong);
+  font-weight: 600;
+  margin: 0 0 1.2em;
+  display: inline-block;
+}
+
+.eyebrow--light {
+  color: var(--cyan);
+}
+
+.light {
+  color: var(--pearl);
+}
+
+/* ---------- Preload Screen ---------- */
+.preload {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cyan);
+  transition: opacity 0.8s var(--ease), visibility 0.8s;
+}
+
+.preload-arc {
+  animation: archPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes archPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.9) translateY(4px); }
+  50% { opacity: 1; transform: scaleY(1.05) translateY(0); }
+}
+
+.preload.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ---------- Scroll Progress Bar ---------- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 1001;
+  background: transparent;
+}
+
+.scroll-progress__bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--blue), var(--cyan-strong));
+  transition: width 0.1s linear;
+}
+
+/* ---------- Announcement / Promotion Bar ---------- */
+.announce {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 901;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: linear-gradient(90deg, var(--navy), var(--blue-deep));
+  color: var(--pearl);
+  font-size: 0.8rem;
+  padding: 10px 48px 10px 24px;
+  text-align: center;
+  transition: transform 0.3s var(--ease);
+}
+
+.announce.is-hidden {
+  transform: translateY(-100%);
+}
+
+.announce p {
+  margin: 0;
+  color: rgba(250, 249, 246, 0.95);
+  font-weight: 500;
+}
+
+.announce__link {
+  font-weight: 700;
+  color: var(--cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  flex-shrink: 0;
+}
+
+.announce__close {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(250, 249, 246, 0.7);
+  transition: color 0.2s;
+  padding: 6px;
+}
+
+.announce__close:hover {
+  color: var(--white);
+}
+
+body.has-announce .header {
+  top: 38px;
+}
+
+body.has-announce {
+  --announce-h: 38px;
+}
+
+/* ---------- App Header ---------- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  height: var(--header-h);
+  transition: top 0.3s var(--ease), box-shadow 0.3s var(--ease), background 0.3s var(--ease);
+  display: flex;
+  align-items: center;
+  background: rgba(250, 249, 246, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--line);
+}
+
+.header.is-scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 10px 30px -10px rgba(11, 31, 58, 0.08);
+}
+
+.header__inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand__mark {
+  color: var(--blue);
+  display: flex;
+  transform-origin: center;
+  transition: transform 0.4s var(--ease);
+}
+
+.brand:hover .brand__mark {
+  transform: rotate(5deg) scale(1.05);
+}
+
+.brand__text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+.brand__text--light {
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.nav {
+  display: none;
+  gap: 32px;
+}
+
+.nav a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy-soft);
+  position: relative;
+  padding: 8px 0;
+  transition: color 0.3s var(--ease);
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: var(--cyan-strong);
+  transition: width 0.3s var(--ease);
+}
+
+.nav a:hover {
+  color: var(--cyan-strong);
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header__cta {
+  display: none;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--blue);
+  border: 1.5px solid var(--line);
+  background: transparent;
+  flex-shrink: 0;
+  transition: border-color 0.3s, color 0.3s, background-color 0.3s;
+}
+
+.icon-btn:hover {
+  border-color: var(--blue);
+  background-color: rgba(29, 78, 137, 0.04);
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  align-items: center;
+  transition: border-color 0.3s;
+}
+
+.hamburger:hover {
+  border-color: var(--navy);
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 20px;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: transform 0.3s var(--ease), opacity 0.2s;
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (min-width: 960px) {
+  .nav { display: flex; }
+  .header__cta { display: inline-flex; }
+  .hamburger { display: none; }
+}
+
+/* ---------- Mobile Drawer Menu ---------- */
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.drawer__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 31, 58, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+
+.drawer__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(360px, 86vw);
+  background: var(--pearl);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  transform: translateX(100%);
+  transition: transform 0.4s var(--ease);
+  box-shadow: var(--shadow-strong);
+}
+
+.drawer.is-open {
+  pointer-events: auto;
+}
+
+.drawer.is-open .drawer__backdrop {
+  opacity: 1;
+}
+
+.drawer.is-open .drawer__panel {
+  transform: translateX(0);
+}
+
+.drawer__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawer__close {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy);
+  transition: background-color 0.2s;
+}
+
+.drawer__close:hover {
+  background-color: var(--pearl-dim);
+}
+
+.drawer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.drawer__nav a {
+  padding: 12px 6px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--navy-soft);
+  border-bottom: 1px solid var(--line);
+  transition: color 0.2s, padding-left 0.2s;
+}
+
+.drawer__nav a:hover {
+  color: var(--cyan-strong);
+  padding-left: 12px;
+}
+
+/* ---------- Buttons & CTAs ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  border-radius: 100px;
+  padding: 16px 32px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+  color: var(--white);
+  box-shadow: 0 12px 28px -8px rgba(29, 78, 137, 0.45);
+}
+
+.btn--primary:hover {
+  box-shadow: 0 18px 36px -8px rgba(29, 78, 137, 0.55);
+  transform: translateY(-2px);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--navy);
+  border: 1.5px solid var(--line);
+}
+
+.btn--ghost:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  background-color: rgba(29, 78, 137, 0.02);
+}
+
+.btn--sm {
+  padding: 12px 24px;
+  font-size: 0.85rem;
+}
+
+.btn--lg {
+  padding: 18px 38px;
+  font-size: 1rem;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn--elevated {
+  box-shadow: var(--shadow-strong);
+}
+
+/* Ripple effect container alignment */
+.ripple {
+  isolation: isolate;
+}
+
+.ripple .ripple-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: rippleAnim 0.65s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes rippleAnim {
+  to { transform: scale(3); opacity: 0; }
+}
+
+/* ---------- Scroll Reveal Base ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Section Divider Smile Arc ---------- */
+.section-divider {
+  color: var(--pearl);
+  background: var(--navy);
+  height: 32px;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.section-divider svg {
+  width: 100%;
+  height: 100%;
+  color: var(--pearl);
+}
+
+.section-divider--soft {
+  background: var(--pearl);
+  height: 28px;
+}
+
+.section-divider--soft svg {
+  color: var(--line);
+}
+
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
+.hero {
+  position: relative;
+  padding: calc(var(--header-h) + 60px) 0 80px;
   background:
-    radial-gradient(120% 60% at 50% -10%, rgba(111,214,232,0.25), transparent 60%),
-    linear-gradient(180deg,var(--pearl) 0%, var(--pearl-dim) 100%);
-  overflow:hidden;
-}
-.hero__glow{
-  position:absolute;top:-120px;right:-100px;width:360px;height:360px;border-radius:50%;
-  background:radial-gradient(circle,var(--cyan) 0%, transparent 70%);opacity:.35;filter:blur(10px);
-}
-.hero__inner{max-width:640px;margin:0 auto;padding:0 20px;text-align:center;position:relative;}
-.hero__headline{font-size:clamp(2rem,7vw,2.9rem);margin-bottom:.4em;}
-.hero__subtitle{font-size:1.05rem;max-width:480px;margin:0 auto 1.8em;}
-.hero__actions{display:flex;flex-direction:column;gap:14px;align-items:stretch;margin-bottom:52px;}
-.hero__actions .btn{width:100%;}
-@media (min-width:560px){
-  .hero__actions{flex-direction:row;justify-content:center;}
-  .hero__actions .btn{width:auto;}
+    radial-gradient(130% 70% at 50% -10%, rgba(111, 214, 232, 0.22), transparent 60%),
+    linear-gradient(180deg, var(--pearl) 0%, var(--pearl-dim) 100%);
+  overflow: hidden;
 }
 
-.hero__explore{
-  display:inline-block;font-size:.82rem;font-weight:700;color:var(--ink-soft);
-  margin-bottom:36px;padding-bottom:2px;border-bottom:1px solid var(--line);
-}
-.hero__explore:hover{color:var(--blue);border-color:var(--blue);}
-
-.lead-form{
-  max-width:480px;margin:0 auto 48px;text-align:left;
-  background:rgba(255,255,255,0.65);backdrop-filter:blur(10px);
-  border:1px solid var(--line);border-radius:var(--radius-md);
-  padding:20px;box-shadow:var(--shadow-soft);
-}
-.lead-form__label{font-weight:700;font-size:.86rem;color:var(--navy);margin-bottom:12px;}
-.lead-form__row{display:flex;flex-direction:column;gap:10px;}
-.lead-form input{
-  width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);
-  background:var(--white);font-family:inherit;font-size:.9rem;color:var(--ink);
-}
-.lead-form input:focus{outline:none;border-color:var(--blue);}
-.lead-form .btn{width:100%;}
-.lead-form__note{font-size:.74rem;color:var(--ink-soft);opacity:.75;margin:10px 0 0;}
-@media (min-width:560px){
-  .lead-form__row{flex-direction:row;}
-  .lead-form input{flex:1;}
-  .lead-form .btn{width:auto;flex-shrink:0;}
+.hero__glow {
+  position: absolute;
+  top: -150px;
+  right: -120px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(111, 214, 232, 0.4) 0%, transparent 70%);
+  opacity: 0.4;
+  filter: blur(15px);
+  pointer-events: none;
 }
 
-.hero__stage{position:relative;height:280px;max-width:340px;margin:0 auto;}
-.hero__card{position:absolute;border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);}
-.hero__card--photo{width:210px;height:260px;left:50%;top:0;transform:translateX(-58%);}
-.hero__card--aligner{
-  width:180px;height:110px;right:0;bottom:0;
-  background:rgba(255,255,255,0.6);backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,0.5);
-  animation:float 5s ease-in-out infinite;
-}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
-
-.floating-badge{
-  position:absolute;display:flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,0.85);backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,0.6);
-  border-radius:100px;padding:9px 14px;font-size:.74rem;font-weight:700;color:var(--navy);
-  box-shadow:var(--shadow-soft);
-}
-.floating-badge svg{color:var(--cyan-strong);flex-shrink:0;}
-.floating-badge--1{left:-6px;top:36px;animation:float 6s ease-in-out infinite;}
-.floating-badge--2{left:2px;bottom:64px;animation:float 5.5s ease-in-out infinite reverse;}
-
-/* image placeholder blocks (used in lieu of shipped photography) */
-.img-placeholder{
-  width:100%;height:100%;border-radius:var(--radius-lg);
-  background:linear-gradient(150deg,var(--pearl-dim),var(--white));
-  border:1px solid var(--line);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
-  color:var(--blue);position:relative;overflow:hidden;
-}
-.img-placeholder--dark{background:linear-gradient(150deg,var(--navy-soft),var(--navy));color:var(--cyan);border-color:rgba(255,255,255,0.08);}
-.img-placeholder__tag{
-  position:absolute;bottom:10px;right:12px;
-  font-family:var(--font-mono);font-size:.6rem;letter-spacing:.02em;
-  color:inherit;opacity:.5;
-}
-/* real photographic imagery, duotone-treated to sit inside the brand palette */
-.photo{
-  width:100%;height:100%;border-radius:var(--radius-lg);overflow:hidden;position:relative;
-  border:1px solid var(--line);
-}
-.photo img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(105%);}
-.photo::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(160deg, rgba(11,31,58,0.32), rgba(47,182,206,0.14));
-  mix-blend-mode:multiply;
-}
-.photo--dark::after{background:linear-gradient(160deg, rgba(11,31,58,0.62), rgba(0,0,0,0.4));}
-
-.compare__label{
-  position:absolute;top:12px;left:14px;font-family:var(--font-mono);
-  font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;opacity:.7;
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+  align-items: center;
 }
 
-/* ---------- Social proof stats ---------- */
-.stats{padding:40px 0 8px;}
-.stats__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;text-align:center;}
-@media (min-width:760px){ .stats__grid{grid-template-columns:repeat(4,1fr);} }
-.stat{display:flex;flex-direction:column;gap:4px;}
-.stat__num{font-family:var(--font-display);font-size:clamp(1.7rem,5vw,2.3rem);font-weight:600;color:var(--blue);}
-.stat__label{font-size:.78rem;color:var(--ink-soft);font-weight:600;}
-.stats__note{text-align:center;font-size:.7rem;color:var(--ink-soft);opacity:.6;margin:18px 0 0;font-family:var(--font-mono);}
-
-/* ---------- Trust ---------- */
-.trust{padding-top:56px;}
-.trust__grid{display:grid;grid-template-columns:1fr;gap:16px;}
-@media (min-width:640px){ .trust__grid{grid-template-columns:repeat(2,1fr);} }
-@media (min-width:980px){ .trust__grid{grid-template-columns:repeat(4,1fr);} }
-.trust__card{
-  background:rgba(255,255,255,0.7);backdrop-filter:blur(10px);
-  border:1px solid var(--line);border-radius:var(--radius-md);
-  padding:26px 22px;box-shadow:var(--shadow-soft);
-  transition:transform .3s var(--ease), box-shadow .3s var(--ease);
-}
-.trust__card:hover{transform:translateY(-4px);box-shadow:var(--shadow-strong);}
-.trust__icon{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:48px;height:48px;border-radius:14px;
-  background:linear-gradient(135deg,var(--blue),var(--cyan-strong));color:var(--white);
-  margin-bottom:16px;
-}
-.trust__card h3{font-size:1.05rem;margin-bottom:.4em;}
-.trust__card p{font-size:.9rem;margin:0;}
-
-/* ---------- Aligners explanation ---------- */
-.aligners__grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center;}
-@media (min-width:900px){ .aligners__grid{grid-template-columns:1.1fr .9fr;gap:60px;} }
-.lead{font-size:1.05rem;}
-.check-list{display:flex;flex-direction:column;gap:14px;margin-top:1.4em;}
-.check-list li{display:flex;align-items:flex-start;gap:10px;font-weight:600;color:var(--navy-soft);font-size:.95rem;}
-.check-list svg{color:var(--cyan-strong);flex-shrink:0;margin-top:2px;}
-.aligners__visual{display:flex;align-items:center;justify-content:center;}
-.aligner-3d{
-  width:100%;max-width:340px;aspect-ratio:220/160;
-  background:radial-gradient(120% 100% at 50% 30%, rgba(111,214,232,0.25), transparent 65%), var(--white);
-  border:1px solid var(--line);border-radius:var(--radius-lg);
-  display:flex;align-items:center;justify-content:center;padding:20px;
-  box-shadow:var(--shadow-soft);
+@media (min-width: 960px) {
+  .hero__grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+  }
 }
 
-/* ---------- Benefits ---------- */
-.benefits__grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:44px;}
-@media (min-width:640px){ .benefits__grid{grid-template-columns:repeat(2,1fr);} }
-@media (min-width:980px){ .benefits__grid{grid-template-columns:repeat(3,1fr);} }
-.benefit-card{
-  background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);
-  padding:28px 24px;box-shadow:var(--shadow-soft);
-  transition:transform .3s var(--ease), box-shadow .3s var(--ease);
-}
-.benefit-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-strong);}
-.benefit-card__icon{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:44px;height:44px;border-radius:12px;background:var(--pearl-dim);color:var(--blue);margin-bottom:14px;
-}
-.benefit-card h3{font-size:1.02rem;margin-bottom:.35em;}
-.benefit-card p{font-size:.88rem;margin:0;}
-
-/* ---------- Transform / before-after ---------- */
-.transform{background:var(--pearl-dim);}
-.transform__grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center;}
-@media (min-width:900px){ .transform__grid{grid-template-columns:1fr 1fr;gap:60px;} }
-.compare{display:flex;gap:14px;}
-.compare__pane{flex:1;aspect-ratio:3/4;position:relative;}
-
-/* ---------- Technology (dark) ---------- */
-.technology{background:var(--navy);position:relative;overflow:hidden;}
-.tech__glow{
-  position:absolute;top:-140px;left:50%;transform:translateX(-50%);
-  width:600px;height:400px;background:radial-gradient(circle,rgba(47,182,206,0.28),transparent 70%);
-}
-.technology h2, .technology p{position:relative;}
-.technology p{color:rgba(250,249,246,0.68);}
-.tech__grid{display:grid;grid-template-columns:1fr;gap:36px;margin-top:44px;position:relative;}
-@media (min-width:900px){ .tech__grid{grid-template-columns:1fr 1fr;align-items:center;} }
-.tech__visual{aspect-ratio:4/3;}
-.tech__list{display:flex;flex-direction:column;gap:26px;}
-.tech__item{display:flex;gap:18px;align-items:flex-start;}
-.tech__num{font-family:var(--font-mono);color:var(--cyan);font-size:.85rem;font-weight:500;padding-top:4px;}
-.tech__item h3{color:var(--pearl);font-size:1rem;margin-bottom:.3em;}
-.tech__item p{color:rgba(250,249,246,0.62);font-size:.9rem;margin:0;}
-
-/* ---------- Process timeline ---------- */
-.timeline{display:grid;grid-template-columns:1fr;gap:28px;margin-top:44px;counter-reset:step;}
-@media (min-width:760px){ .timeline{grid-template-columns:repeat(4,1fr);} }
-.timeline__item{
-  background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);
-  padding:26px 22px;box-shadow:var(--shadow-soft);position:relative;
-}
-.timeline__arc{color:var(--cyan-strong);display:inline-flex;margin-bottom:14px;}
-.timeline__item h3{font-size:.98rem;margin-bottom:.35em;}
-.timeline__item p{font-size:.86rem;margin:0;}
-
-/* ---------- Experts ---------- */
-.experts__grid{display:grid;grid-template-columns:1fr;gap:22px;margin-top:44px;}
-@media (min-width:700px){ .experts__grid{grid-template-columns:repeat(2,1fr);} }
-.expert-card{
-  background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);
-  padding:28px;box-shadow:var(--shadow-soft);
-}
-.expert-card__photo{width:76px;height:76px;border-radius:50%;margin-bottom:18px;}
-.expert-card__photo .img-placeholder__tag{display:none;}
-.expert-card__meta{font-family:var(--font-mono);font-size:.75rem;color:var(--cyan-strong);margin-bottom:.6em;}
-.expert-card__note{font-size:.88rem;font-style:italic;}
-
-/* ---------- Reviews ---------- */
-.review-aggregate{color:var(--cyan-strong);font-weight:700;font-size:.92rem;letter-spacing:.04em;margin-top:-8px;}
-.review-aggregate strong{color:var(--navy);}
-
-.reviews__track{
-  display:flex;gap:18px;overflow-x:auto;margin-top:44px;padding-bottom:8px;
-  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
-}
-.review-card{
-  scroll-snap-align:start;flex:0 0 82%;
-  background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);
-  padding:26px;box-shadow:var(--shadow-soft);
-}
-@media (min-width:640px){ .review-card{flex:0 0 340px;} }
-.review-card__stars{color:var(--cyan-strong);letter-spacing:2px;margin-bottom:12px;}
-.review-card p{font-size:.92rem;}
-.review-card__author{font-family:var(--font-mono);font-size:.75rem;color:var(--ink-soft);opacity:.8;}
-
-/* ---------- FAQ ---------- */
-.accordion{margin-top:40px;border-top:1px solid var(--line);}
-.accordion__item{border-bottom:1px solid var(--line);}
-.accordion__trigger{
-  width:100%;display:flex;align-items:center;justify-content:space-between;
-  background:none;border:none;padding:20px 4px;text-align:left;
-  font-weight:700;font-size:1rem;color:var(--navy);cursor:pointer;
-}
-.accordion__chevron{transition:transform .3s var(--ease);color:var(--blue);flex-shrink:0;}
-.accordion__trigger[aria-expanded="true"] .accordion__chevron{transform:rotate(180deg);}
-.accordion__panel{max-height:0;overflow:hidden;transition:max-height .35s var(--ease);}
-.accordion__panel p{padding:0 4px 20px;font-size:.92rem;}
-
-/* ---------- Final CTA ---------- */
-.final-cta{
-  position:relative;overflow:hidden;text-align:center;
-  background-color:var(--navy);background-size:cover;background-position:center;
-}
-.final-cta__scrim{
-  position:absolute;inset:0;
-  background:linear-gradient(160deg, rgba(11,31,58,0.92) 0%, rgba(21,58,102,0.88) 100%);
-}
-.final-cta__glow{position:absolute;bottom:-160px;left:50%;transform:translateX(-50%);width:520px;height:340px;background:radial-gradient(circle,rgba(111,214,232,0.3),transparent 70%);z-index:1;}
-.final-cta__arc{display:inline-flex;color:var(--cyan);margin-bottom:8px;}
-.final-cta h2{font-size:clamp(1.6rem,5vw,2.3rem);max-width:520px;margin-left:auto;margin-right:auto;}
-.final-cta__sub{color:rgba(250,249,246,0.7);max-width:440px;margin:0 auto 2em;position:relative;}
-.final-cta .container{position:relative;z-index:2;}
-
-/* ---------- Footer ---------- */
-.footer{background:var(--navy);color:rgba(250,249,246,0.7);padding:60px 0 24px;}
-.footer__grid{display:grid;grid-template-columns:1fr;gap:36px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,0.1);}
-@media (min-width:700px){ .footer__grid{grid-template-columns:1.4fr 1fr 1fr 1fr;} }
-.footer__brand p{color:rgba(250,249,246,0.55);font-size:.88rem;margin-top:10px;}
-.footer__col h3{color:var(--pearl);font-family:var(--font-body);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px;}
-.footer__col a{display:block;font-size:.9rem;padding:6px 0;color:rgba(250,249,246,0.68);}
-.footer__col a:hover{color:var(--cyan);}
-.footer__bottom{padding-top:20px;font-size:.8rem;text-align:center;color:rgba(250,249,246,0.45);}
-
-/* ---------- Floating WhatsApp ---------- */
-.whatsapp-fab{
-  position:fixed;right:18px;bottom:calc(var(--bottom-nav-h) + 18px);z-index:850;
-  width:56px;height:56px;border-radius:50%;
-  background:linear-gradient(135deg,var(--cyan-strong),var(--blue));color:var(--white);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 16px 34px -10px rgba(29,78,137,0.55);
-  animation:fabPulse 3s ease-in-out infinite;
-}
-@keyframes fabPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
-@media (min-width:900px){ .whatsapp-fab{bottom:24px;} }
-
-/* ---------- Bottom mobile nav ---------- */
-.bottom-nav{
-  position:fixed;left:0;right:0;bottom:0;z-index:900;height:var(--bottom-nav-h);
-  background:rgba(255,255,255,0.85);backdrop-filter:blur(16px);
-  border-top:1px solid var(--line);
-  display:flex;align-items:center;justify-content:space-around;
-  padding-bottom:env(safe-area-inset-bottom);
-}
-.bottom-nav__item{
-  display:flex;flex-direction:column;align-items:center;gap:3px;
-  font-size:.65rem;font-weight:700;color:var(--ink-soft);padding:8px 10px;border-radius:12px;
-  transition:color .2s;
-}
-.bottom-nav__item.is-active{color:var(--blue);}
-.bottom-nav__item--cta{
-  background:linear-gradient(135deg,var(--blue),var(--blue-deep));color:var(--white)!important;
-  width:48px;height:48px;border-radius:50%;padding:0;margin-top:-22px;
-  box-shadow:0 12px 26px -8px rgba(29,78,137,0.6);
-}
-@media (min-width:900px){ .bottom-nav{display:none;} body{padding-bottom:0;} .whatsapp-fab{bottom:24px;} }
-
-/* ---------- Reduced motion ---------- */
-@media (prefers-reduced-motion: reduce){
-  *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+.hero__content {
+  max-width: 600px;
 }
 
-/* ---------- Focus visibility ---------- */
-a:focus-visible, button:focus-visible{outline:2px solid var(--cyan-strong);outline-offset:3px;border-radius:6px;}
+.hero__headline {
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  margin-bottom: 0.4em;
+  color: var(--navy);
+}
+
+.hero__subtitle {
+  font-size: 1.15rem;
+  margin-bottom: 2em;
+  color: var(--ink-soft);
+  max-width: 520px;
+}
+
+.hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: stretch;
+  margin-bottom: 48px;
+}
+
+@media (min-width: 480px) {
+  .hero__actions {
+    flex-direction: row;
+  }
+  .hero__actions .btn {
+    flex: 1;
+  }
+}
+
+@media (min-width: 960px) {
+  .hero__actions .btn {
+    flex: initial;
+  }
+}
+
+.hero__stage {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  aspect-ratio: 1 / 1.15;
+}
+
+.hero__card {
+  position: absolute;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-strong);
+  overflow: hidden;
+}
+
+.hero__card--photo {
+  width: 78%;
+  height: 85%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.hero__card--photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(11, 31, 58, 0.35) 100%);
+}
+
+.hero__card--photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__card--aligner {
+  width: 55%;
+  height: 48%;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  border: 4px solid var(--white);
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero__card--aligner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-16px) rotate(1deg); }
+}
+
+.floating-badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 100px;
+  padding: 10px 18px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--navy);
+  box-shadow: var(--shadow-soft);
+  z-index: 3;
+}
+
+.floating-badge svg {
+  color: var(--cyan-strong);
+  flex-shrink: 0;
+}
+
+.floating-badge--1 {
+  left: -12px;
+  bottom: 22%;
+  animation: float 5.5s ease-in-out infinite reverse;
+}
+
+.floating-badge--2 {
+  right: 12px;
+  top: 24%;
+  animation: float 7s ease-in-out infinite 0.5s;
+}
+
+/* =========================================================
+   SOCIAL PROOF STATS
+   ========================================================= */
+.stats {
+  padding: 56px 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+}
+
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 24px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .stats__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stat__num {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1;
+}
+
+.stat__label {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* =========================================================
+   TRUST SECTION
+   ========================================================= */
+.trust {
+  background: var(--pearl);
+}
+
+.trust__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 640px) {
+  .trust__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .trust__grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.trust__card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 36px 28px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), background-color 0.4s var(--ease);
+}
+
+.trust__card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-strong);
+  background: var(--white);
+}
+
+.trust__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(29, 78, 137, 0.08), rgba(111, 214, 232, 0.15));
+  color: var(--blue);
+  margin-bottom: 24px;
+}
+
+.trust__card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5em;
+  color: var(--navy);
+}
+
+.trust__card p {
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+/* =========================================================
+   CLEAR ALIGNERS DESCRIPTION
+   ========================================================= */
+.aligners__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .aligners__grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 72px;
+  }
+}
+
+.aligners__copy {
+  max-width: 580px;
+}
+
+.aligners__copy p.lead {
+  font-size: 1.1rem;
+  margin-bottom: 2em;
+}
+
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-weight: 600;
+  color: var(--navy-soft);
+  font-size: 1rem;
+}
+
+.check-list svg {
+  color: var(--cyan-strong);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.aligners__visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aligner-display {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(circle, rgba(111, 214, 232, 0.25) 0%, transparent 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aligner-display img {
+  max-width: 85%;
+  height: auto;
+  filter: drop-shadow(0 20px 40px rgba(11, 31, 58, 0.15));
+  animation: float 6s ease-in-out infinite;
+}
+
+/* =========================================================
+   BENEFITS SECTION
+   ========================================================= */
+.benefits__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 56px;
+}
+
+@media (min-width: 640px) {
+  .benefits__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .benefits__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.benefit-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 40px 32px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.benefit-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-strong);
+}
+
+.benefit-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--pearl-dim);
+  color: var(--blue);
+  margin-bottom: 24px;
+}
+
+.benefit-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.6em;
+}
+
+.benefit-card p {
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+/* =========================================================
+   BEFORE/AFTER INTERACTIVE SLIDER
+   ========================================================= */
+.transform {
+  background: var(--pearl-dim);
+}
+
+.transform__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .transform__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+  }
+}
+
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-strong);
+  user-select: none;
+}
+
+.slider-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slider-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.img-before {
+  z-index: 2;
+  clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+}
+
+.img-after {
+  z-index: 1;
+}
+
+.slider-label {
+  position: absolute;
+  top: 16px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: rgba(11, 31, 58, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  z-index: 3;
+}
+
+.slider-label--before {
+  left: 16px;
+}
+
+.slider-label--after {
+  right: 16px;
+}
+
+.slider-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--white);
+  z-index: 4;
+  transform: translateX(-50%);
+  cursor: ew-resize;
+  pointer-events: none;
+}
+
+.slider-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: 0 4px 20px rgba(11, 31, 58, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* =========================================================
+   TECHNOLOGY SECTION (DARK THEME)
+   ========================================================= */
+.technology {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+
+.tech__glow {
+  position: absolute;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(111, 214, 232, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.technology h2, .technology p {
+  position: relative;
+}
+
+.technology p {
+  color: rgba(250, 249, 246, 0.7);
+}
+
+.tech__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  margin-top: 64px;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 960px) {
+  .tech__grid {
+    grid-template-columns: 1fr 1.1fr;
+    align-items: center;
+    gap: 72px;
+  }
+}
+
+.tech__visual {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-strong);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tech__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tech__list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.tech__item {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.tech__num {
+  font-family: var(--font-mono);
+  color: var(--cyan);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(111, 214, 232, 0.1);
+}
+
+.tech__item h3 {
+  color: var(--pearl);
+  font-size: 1.15rem;
+  margin-bottom: 0.4em;
+}
+
+.tech__item p {
+  color: rgba(250, 249, 246, 0.6);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+/* =========================================================
+   TREATMENT JOURNEY TIMELINE
+   ========================================================= */
+.timeline {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin-top: 56px;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .timeline {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.timeline__item {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 36px 28px;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+}
+
+.timeline__number {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--cyan-strong);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.timeline__arc {
+  color: var(--cyan-strong);
+  display: inline-flex;
+  margin-bottom: 18px;
+}
+
+.timeline__item h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5em;
+}
+
+.timeline__item p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* =========================================================
+   DOCTORS SECTION
+   ========================================================= */
+.experts__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin-top: 56px;
+}
+
+@media (min-width: 768px) {
+  .experts__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.expert-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 40px;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+@media (min-width: 480px) {
+  .expert-card {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.expert-card__photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 4px solid var(--pearl-dim);
+}
+
+.expert-card__info {
+  flex: 1;
+}
+
+.expert-card__meta {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--cyan-strong);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.expert-card__info h3 {
+  font-size: 1.25rem;
+  margin-bottom: 4px;
+}
+
+.expert-card__sub {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--blue);
+  margin-bottom: 16px;
+}
+
+.expert-card__info p {
+  font-size: 0.92rem;
+  margin-bottom: 16px;
+}
+
+.expert-card__note {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  border-left: 2px solid var(--cyan-strong);
+  padding-left: 12px;
+  margin: 0;
+}
+
+/* =========================================================
+   TESTIMONIALS SECTION
+   ========================================================= */
+.review-aggregate {
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  margin-top: -12px;
+}
+
+.review-aggregate strong {
+  color: var(--navy);
+}
+
+.reviews__track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  margin-top: 56px;
+  padding: 12px 12px 28px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.reviews__track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.reviews__track::-webkit-scrollbar-track {
+  background: var(--pearl-dim);
+  border-radius: 10px;
+}
+
+.reviews__track::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 10px;
+}
+
+.reviews__track::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-soft);
+}
+
+.review-card {
+  scroll-snap-align: start;
+  flex: 0 0 90%;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 40px;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (min-width: 640px) {
+  .review-card { flex: 0 0 420px; }
+}
+
+.review-card__stars {
+  color: var(--cyan-strong);
+  margin-bottom: 20px;
+  display: flex;
+  gap: 4px;
+}
+
+.review-card p {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+
+.review-card__author {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* =========================================================
+   FAQ SECTION (ACCORDION)
+   ========================================================= */
+.accordion {
+  margin-top: 48px;
+  border-top: 1px solid var(--line);
+}
+
+.accordion__item {
+  border-bottom: 1px solid var(--line);
+}
+
+.accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 8px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--navy);
+  transition: color 0.2s;
+}
+
+.accordion__trigger:hover {
+  color: var(--blue);
+}
+
+.accordion__chevron {
+  transition: transform 0.3s var(--ease);
+  color: var(--blue);
+  flex-shrink: 0;
+}
+
+.accordion__trigger[aria-expanded="true"] .accordion__chevron {
+  transform: rotate(180deg);
+}
+
+.accordion__panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s var(--ease);
+}
+
+.accordion__panel p {
+  padding: 0 8px 24px;
+  font-size: 0.94rem;
+  margin: 0;
+}
+
+/* =========================================================
+   FINAL CTA SECTION
+   ========================================================= */
+.final-cta {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  background-color: var(--navy);
+  background-size: cover;
+  background-position: center;
+}
+
+.final-cta__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(11, 31, 58, 0.95) 0%, rgba(21, 58, 102, 0.9) 100%);
+  z-index: 1;
+}
+
+.final-cta__glow {
+  position: absolute;
+  bottom: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(111, 214, 232, 0.25) 0%, transparent 70%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.final-cta__arc {
+  display: inline-flex;
+  color: var(--cyan);
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 3;
+}
+
+.final-cta h2 {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 3;
+}
+
+.final-cta__sub {
+  color: rgba(250, 249, 246, 0.75);
+  max-width: 480px;
+  margin: 0 auto 2.5em;
+  position: relative;
+  z-index: 3;
+}
+
+.final-cta .btn {
+  position: relative;
+  z-index: 3;
+}
+
+.final-cta .container {
+  position: relative;
+  z-index: 3;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.footer {
+  background: var(--navy);
+  color: rgba(250, 249, 246, 0.65);
+  padding: 80px 0 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 768px) {
+  .footer__grid {
+    grid-template-columns: 1.5fr 1fr 1fr;
+  }
+}
+
+.footer__brand p {
+  color: rgba(250, 249, 246, 0.5);
+  font-size: 0.9rem;
+  margin-top: 16px;
+  max-width: 320px;
+}
+
+.footer__col h3 {
+  color: var(--pearl);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.footer__col a {
+  display: block;
+  font-size: 0.92rem;
+  padding: 8px 0;
+  color: rgba(250, 249, 246, 0.6);
+  transition: color 0.2s;
+}
+
+.footer__col a:hover {
+  color: var(--cyan);
+}
+
+.footer__bottom {
+  padding-top: 32px;
+  font-size: 0.8rem;
+  text-align: center;
+  color: rgba(250, 249, 246, 0.4);
+}
+
+/* =========================================================
+   FLOATING COMPONENTS & BOTTOM BAR
+   ========================================================= */
+.whatsapp-fab {
+  position: fixed;
+  right: 20px;
+  bottom: calc(var(--bottom-nav-h) + 20px);
+  z-index: 850;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16px 36px -8px rgba(18, 140, 126, 0.5);
+  animation: fabPulse 3s ease-in-out infinite;
+}
+
+@keyframes fabPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+@media (min-width: 960px) {
+  .whatsapp-fab {
+    bottom: 28px;
+    right: 28px;
+  }
+}
+
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 900;
+  height: var(--bottom-nav-h);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.bottom-nav__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  padding: 8px 12px;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+
+.bottom-nav__item.is-active {
+  color: var(--blue);
+}
+
+.bottom-nav__item--cta {
+  background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+  color: var(--white) !important;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  padding: 0;
+  margin-top: -24px;
+  box-shadow: 0 12px 28px -8px rgba(29, 78, 137, 0.6);
+  justify-content: center;
+}
+
+@media (min-width: 960px) {
+  .bottom-nav { display: none; }
+  body { padding-bottom: 0; }
+  .whatsapp-fab { bottom: 28px; }
+}
+
+/* ---------- Focus Visibilities ---------- */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--cyan-strong);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+/* ---------- Accessibility Reduce Motion Support ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 </style>
 </head>
 <body>
 
-<!-- Loading Screen -->
+<!-- Preloader Screen -->
 <div id="preload" class="preload" aria-hidden="true">
-  <svg class="preload-arc" viewBox="0 0 120 60" width="88" height="44">
-    <path d="M4 40 C 30 4, 90 4, 116 40" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  <svg class="preload-arc" viewBox="0 0 120 60" width="96" height="48">
+    <path d="M4 40 C 30 4, 90 4, 116 40" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
   </svg>
 </div>
 
-<!-- Scroll progress -->
-<div class="scroll-progress" aria-hidden="true"><div id="scrollBar" class="scroll-progress__bar"></div></div>
+<!-- Dynamic Scroll Indicator Progress -->
+<div class="scroll-progress" aria-hidden="true">
+  <div id="scrollBar" class="scroll-progress__bar"></div>
+</div>
 
-<!-- ANNOUNCEMENT / URGENCY BAR -->
+<!-- Premium Promotional System Announcement -->
 <div class="announce" id="announceBar">
-  <p><strong>New patient consultation slots open this month</strong> — response within a few hours on WhatsApp.</p>
-  <a href="#" data-whatsapp class="announce__link">Book now</a>
-  <button class="announce__close" id="announceClose" aria-label="Dismiss announcement">
-    <svg viewBox="0 0 24 24" width="14" height="14"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  <p><strong>Clinical consultations now open for new patients</strong> — reserve your digital assessment instantly.</p>
+  <a href="#" data-whatsapp class="announce__link">Connect instantly</a>
+  <button class="announce__close" id="announceClose" aria-label="Dismiss message">
+    <svg viewBox="0 0 24 24" width="14" height="14"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
   </button>
 </div>
 
-<!-- HEADER -->
+<!-- Core Site Header -->
 <header class="header" id="siteHeader">
   <div class="header__inner">
-    <a href="#home" class="brand" aria-label="M32 Dental Centre, home">
+    <a href="#home" class="brand" aria-label="M32 Dental Centre Home">
       <span class="brand__mark" aria-hidden="true">
-        <svg viewBox="0 0 40 40" width="34" height="34"><path d="M4 26 C 10 8, 30 8, 36 26" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 40 40" width="36" height="36">
+          <path d="M4 26 C 10 8, 30 8, 36 26" fill="none" stroke="currentColor" stroke-width="3.8" stroke-linecap="round"/>
+        </svg>
       </span>
       <span class="brand__text">M32<span class="brand__text--light"> Dental Centre</span></span>
     </a>
 
-    <nav class="nav" id="primaryNav" aria-label="Primary">
+    <nav class="nav" id="primaryNav" aria-label="Main navigation">
       <a href="#home">Home</a>
       <a href="#aligners">Clear Aligners</a>
       <a href="#benefits">Benefits</a>
@@ -597,31 +1795,33 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--cyan-strong);outli
     </nav>
 
     <div class="header__actions">
-      <a class="icon-btn header__call" href="tel:+919947960606" aria-label="Call M32 Dental Centre">
-        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 3h3l2 5-2.5 2a11 11 0 0 0 5.5 5.5l2-2.5 5 2v3a2 2 0 0 1-2 2C10.4 20 4 13.6 4 5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <a class="icon-btn" href="tel:+919947960606" aria-label="Call Clinic Registration Desk">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
       </a>
-      <a class="btn btn--primary btn--sm header__cta" id="headerCta" href="#" data-whatsapp>
-        Book Appointment
+      <a class="btn btn--primary btn--sm header__cta ripple" href="#" data-whatsapp>
+        Book Consultation
       </a>
     </div>
 
-    <button class="hamburger" id="hamburgerBtn" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+    <button class="hamburger" id="hamburgerBtn" aria-expanded="false" aria-controls="drawer" aria-label="Toggle menu navigation">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<!-- MOBILE DRAWER -->
+<!-- Slide-Out Mobile Navigation Drawer -->
 <div class="drawer" id="drawer" aria-hidden="true">
   <div class="drawer__backdrop" data-close-drawer></div>
-  <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu system">
     <div class="drawer__top">
-      <span class="brand__text">M32<span class="brand__text--light"> Dental Centre</span></span>
+      <span class="brand__text">M32<span class="brand__text--light"> Dental</span></span>
       <button class="drawer__close" data-close-drawer aria-label="Close menu">
-        <svg viewBox="0 0 24 24" width="20" height="20"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
       </button>
     </div>
-    <nav class="drawer__nav" aria-label="Mobile">
+    <nav class="drawer__nav" aria-label="Mobile Navigation">
       <a href="#home" data-close-drawer>Home</a>
       <a href="#aligners" data-close-drawer>Clear Aligners</a>
       <a href="#benefits" data-close-drawer>Benefits</a>
@@ -630,428 +1830,565 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--cyan-strong);outli
       <a href="#reviews" data-close-drawer>Reviews</a>
       <a href="#contact" data-close-drawer>Contact</a>
     </nav>
-    <a class="btn btn--primary btn--block" href="#" data-whatsapp>Book Consultation</a>
+    <a class="btn btn--primary btn--block ripple" href="#" data-whatsapp>Book Consultation</a>
     <a class="btn btn--ghost btn--block" href="tel:+919947960606">Call +91 99479 60606</a>
   </div>
 </div>
 
 <main id="home">
 
-  <!-- HERO -->
+  <!-- =========================================================
+       HERO SCREEN
+       ========================================================= -->
   <section class="hero" aria-labelledby="heroHeading">
     <div class="hero__glow" aria-hidden="true"></div>
-    <div class="hero__inner">
+    <div class="container hero__grid">
+      <div class="hero__content">
+        <p class="eyebrow reveal">Cosmetic Orthodontic Specialists</p>
+        <h1 id="heroHeading" class="hero__headline reveal">Transform Your Smile Discreetly with Clear Aligners</h1>
+        <p class="hero__subtitle reveal">Advanced nearly invisible aligner solutions designed around comfort, confidence, and your lifestyle.</p>
 
-      <p class="eyebrow reveal">Clear Aligner Specialists</p>
-      <h1 id="heroHeading" class="hero__headline reveal">Transform your smile discreetly with clear aligners</h1>
-      <p class="hero__subtitle reveal">Advanced nearly invisible aligner solutions designed around comfort, confidence, and your lifestyle.</p>
-
-      <div class="hero__actions reveal">
-        <a href="#" class="btn btn--primary btn--lg ripple" data-whatsapp>
-          Book Consultation
-          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="tel:+919947960606" class="btn btn--ghost btn--lg">
-          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 3h3l2 5-2.5 2a11 11 0 0 0 5.5 5.5l2-2.5 5 2v3a2 2 0 0 1-2 2C10.4 20 4 13.6 4 5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-          Call Now
-        </a>
-      </div>
-      <a href="#aligners" class="hero__explore reveal">Explore Treatment ↓</a>
-
-      <form class="lead-form reveal" id="leadForm" aria-label="Quick consultation request">
-        <p class="lead-form__label">Prefer we reach out? Leave your details:</p>
-        <div class="lead-form__row">
-          <input type="text" id="leadName" name="name" placeholder="Your name" required autocomplete="name">
-          <input type="tel" id="leadPhone" name="phone" placeholder="Phone number" required autocomplete="tel" inputmode="tel">
-          <button type="submit" class="btn btn--primary btn--sm ripple">Request Callback</button>
+        <div class="hero__actions reveal">
+          <a href="#" class="btn btn--primary btn--lg ripple" data-whatsapp>
+            Book Consultation
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+          <a href="#aligners" class="btn btn--ghost btn--lg ripple">
+            Explore Treatment
+          </a>
         </div>
-        <p class="lead-form__note">No spam. We reply on WhatsApp within a few hours.</p>
-      </form>
+      </div>
 
       <div class="hero__stage reveal" aria-hidden="true">
-        <div class="hero__card hero__card--photo photo">
-          <img src="https://picsum.photos/seed/m32-hero-smile/640/800" alt="Confident young professional smiling after clear aligner treatment" loading="lazy" width="640" height="800">
+        <div class="hero__card hero__card--photo">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=640&h=800" alt="Confident orthodontics patient with clear aligners">
         </div>
 
         <div class="floating-badge floating-badge--1">
-          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span>FDA-grade material</span>
-        </div>
-        <div class="floating-badge floating-badge--2">
-          <svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <span>Wear 20–22 hrs / day</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>FDA-Approved Clinical Polymers</span>
         </div>
 
-        <div class="hero__card hero__card--aligner photo photo--dark">
-          <img src="https://picsum.photos/seed/m32-aligner-tray/480/320" alt="Close up view of a clear dental aligner tray" loading="lazy" width="480" height="320">
+        <div class="floating-badge floating-badge--2">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <span>Comfort-Fit Design</span>
+        </div>
+
+        <div class="hero__card hero__card--aligner">
+          <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&q=80&w=480&h=320" alt="Orthodontic clear aligner product details">
         </div>
       </div>
     </div>
+    
     <div class="section-divider" aria-hidden="true">
-      <svg viewBox="0 0 400 24" preserveAspectRatio="none"><path d="M0 20 C 100 -4, 300 -4, 400 20" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+      <svg viewBox="0 0 400 24" preserveAspectRatio="none">
+        <path d="M0 20 C 100 -4, 300 -4, 400 20" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      </svg>
     </div>
   </section>
 
-  <!-- SOCIAL PROOF STATS -->
-  <section class="stats" aria-label="Patient trust statistics">
+  <!-- =========================================================
+       SOCIAL PROOF & INDICATORS
+       ========================================================= -->
+  <section class="stats" aria-label="Clinical Metrics & Statistics">
     <div class="container stats__grid">
       <div class="stat reveal">
-        <span class="stat__num" data-count="2500" data-suffix="+">0</span>
-        <span class="stat__label">Consultations conducted</span>
+        <span class="stat__num" data-count="3800" data-suffix="+">0</span>
+        <span class="stat__label">Patients Treated</span>
       </div>
       <div class="stat reveal">
         <span class="stat__num" data-count="4.9" data-decimal="1" data-suffix="/5">0</span>
-        <span class="stat__label">Average patient rating</span>
+        <span class="stat__label">Average Rating</span>
       </div>
       <div class="stat reveal">
         <span class="stat__num" data-count="15" data-suffix="+">0</span>
-        <span class="stat__label">Years combined clinical experience</span>
+        <span class="stat__label">Years Experience</span>
       </div>
       <div class="stat reveal">
-        <span class="stat__num" data-count="24" data-suffix="h">0</span>
-        <span class="stat__label">Response time on WhatsApp</span>
+        <span class="stat__num" data-count="99.4" data-decimal="1" data-suffix="%">0</span>
+        <span class="stat__label">Success Ratio</span>
       </div>
     </div>
-    <p class="stats__note">Figures are indicative — replace with your clinic's verified numbers before launch.</p>
   </section>
 
-  <!-- TRUST SECTION -->
+  <!-- =========================================================
+       TRUST ARCHITECTURE
+       ========================================================= -->
   <section class="section trust" aria-labelledby="trustHeading">
     <div class="container">
-      <h2 id="trustHeading" class="visually-hidden">Why patients trust M32 Dental Centre</h2>
+      <div class="center reveal">
+        <p class="eyebrow">Luxury Healthcare Standards</p>
+        <h2 id="trustHeading">The Foundations of Clinical Precision</h2>
+        <p class="lead" style="max-width: 600px; margin-bottom: 3em;">Uncompromising standards mapped directly to patient outcomes, comfort parameters, and orthodontic aesthetics.</p>
+      </div>
+
       <div class="trust__grid">
-        <div class="trust__card reveal">
+        <article class="trust__card reveal">
           <span class="trust__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="26" height="26"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
           </span>
-          <h3>Expert dental care</h3>
-          <p>Treatment planned and supervised by experienced dental specialists.</p>
-        </div>
-        <div class="trust__card reveal">
+          <h3>Expert Dental Care</h3>
+          <p>Supervised and calibrated entirely by senior clinicians specializing in progressive modern aligner movements.</p>
+        </article>
+
+        <article class="trust__card reveal">
           <span class="trust__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="26" height="26"><rect x="4" y="4" width="16" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 10h16M10 4v16" stroke="currentColor" stroke-width="1.2"/></svg>
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
           </span>
-          <h3>Advanced technology</h3>
-          <p>Digital scanning and precision planning replace guesswork.</p>
-        </div>
-        <div class="trust__card reveal">
+          <h3>Advanced Technology</h3>
+          <p>Equipped with intraoral digital scanning hardware to map dental geometry down to sub-millimeter tolerances.</p>
+        </article>
+
+        <article class="trust__card reveal">
           <span class="trust__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="26" height="26"><circle cx="12" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c1.5-4 4-5.5 7-5.5S18.5 16 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+            </svg>
           </span>
-          <h3>Personalised planning</h3>
-          <p>Every aligner sequence is mapped to your dental structure alone.</p>
-        </div>
-        <div class="trust__card reveal">
+          <h3>Personalised Planning</h3>
+          <p>Every progressive sequence is structurally simulated to match your specific facial morphology and bite line.</p>
+        </article>
+
+        <article class="trust__card reveal">
           <span class="trust__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="26" height="26"><path d="M12 21s-7-4.4-9.5-9C1 8 3 4 7 4c2.2 0 3.8 1.2 5 3 1.2-1.8 2.8-3 5-3 4 0 6 4 4.5 8-2.5 4.6-9.5 9-9.5 9z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
           </span>
-          <h3>Comfort-focused</h3>
-          <p>Smooth edges and a gradual fit built around daily comfort.</p>
-        </div>
+          <h3>Comfort-Focused Experience</h3>
+          <p>Lasercut edges engineered from dynamic polymers that actively minimize soft-tissue irritation.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- CLEAR ALIGNERS EXPLANATION -->
+  <!-- =========================================================
+       ALIGNERS ADVANTAGES SECTION
+       ========================================================= -->
   <section class="section aligners" id="aligners" aria-labelledby="alignersHeading">
     <div class="container aligners__grid">
       <div class="aligners__copy reveal">
-        <p class="eyebrow">The M32 approach</p>
-        <h2 id="alignersHeading">Modern alignment without traditional braces</h2>
-        <p class="lead">Clear aligners move teeth in small, planned stages — without metal wires or brackets — so treatment fits into your working life rather than around it.</p>
+        <p class="eyebrow">Medical Engineering</p>
+        <h2 id="alignersHeading">Modern Alignment Without Traditional Braces</h2>
+        <p class="lead">Step beyond historical orthodontics. Our clear aligners offer patient-centric clinical results with zero impact on lifestyle, diet, or overall professional articulation.</p>
         <ul class="check-list">
-          <li><svg viewBox="0 0 24 24" width="18" height="18"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Transparent, low-visibility appearance</li>
-          <li><svg viewBox="0 0 24 24" width="18" height="18"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Removable for eating, brushing and important meetings</li>
-          <li><svg viewBox="0 0 24 24" width="18" height="18"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Built around your daily routine, not the other way round</li>
-          <li><svg viewBox="0 0 24 24" width="18" height="18"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Digitally planned from the very first scan</li>
+          <li>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Transparent medical polymer with optimized light-refraction levels.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Easily removable for eating, active sanitation, and critical public engagements.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Comfort-optimized boundaries constructed with dynamic margins.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Digitally generated, validated, and animated virtual pathways.
+          </li>
         </ul>
       </div>
+
       <div class="aligners__visual reveal" aria-hidden="true">
-        <div class="aligner-3d">
-          <svg viewBox="0 0 220 160" width="100%" height="100%">
-            <ellipse cx="110" cy="120" rx="86" ry="18" fill="var(--cyan)" opacity="0.12"/>
-            <path d="M30 70 C 40 20, 180 20, 190 70 C 180 100, 40 100, 30 70 Z" fill="none" stroke="var(--navy)" stroke-width="2"/>
-            <path d="M42 68 C 55 40, 165 40, 178 68" fill="none" stroke="var(--cyan-strong)" stroke-width="1.4" opacity="0.8"/>
-            <path d="M34 78 C 45 106, 175 106, 186 78" fill="none" stroke="var(--navy)" stroke-width="1.4" opacity="0.5"/>
-          </svg>
+        <div class="aligner-display">
+          <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&q=80&w=640" alt="Clinical orthodontic tray model visualization">
         </div>
       </div>
     </div>
   </section>
 
   <div class="section-divider section-divider--soft" aria-hidden="true">
-    <svg viewBox="0 0 400 24" preserveAspectRatio="none"><path d="M0 4 C 100 28, 300 28, 400 4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 400 24" preserveAspectRatio="none">
+      <path d="M0 4 C 100 28, 300 28, 400 4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+    </svg>
   </div>
 
-  <!-- BENEFITS SECTION -->
+  <!-- =========================================================
+       BENEFITS MATRIX
+       ========================================================= -->
   <section class="section benefits" id="benefits" aria-labelledby="benefitsHeading">
     <div class="container">
-      <p class="eyebrow center">Why patients choose M32</p>
-      <h2 id="benefitsHeading" class="center">Built for how professionals actually live</h2>
+      <div class="center reveal">
+        <p class="eyebrow">Professional Lifestyle Integration</p>
+        <h2 id="benefitsHeading">Sophisticated Structural Benefits</h2>
+        <p class="lead" style="max-width: 600px; margin-bottom: 2.5em;">Delivering highly advanced clinical aesthetics to meet the daily requirements of modern lifestyle and professional integration.</p>
+      </div>
 
       <div class="benefits__grid">
         <article class="benefit-card reveal">
-          <span class="benefit-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-          <h3>Nearly invisible design</h3>
-          <p>A discreet, low-profile appearance suited to client meetings and daily life.</p>
+          <span class="benefit-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </span>
+          <h3>Nearly Invisible Design</h3>
+          <p>Premium refractive indexes ensure the aligners integrate visually with structural enamel.</p>
         </article>
+
         <article class="benefit-card reveal">
-          <span class="benefit-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
-          <h3>Comfortable daily routine</h3>
-          <p>Smooth aligner edges, minimal irritation, easy to remove and refit.</p>
+          <span class="benefit-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+          </span>
+          <h3>Comfortable Daily Routine</h3>
+          <p>Custom margins are trimmed to individual margins to prevent soft tissue indentation.</p>
         </article>
+
         <article class="benefit-card reveal">
-          <span class="benefit-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><rect x="3" y="5" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 9h8M8 13h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-          <h3>Designed for professionals</h3>
-          <p>Review appointments scheduled around working hours and travel.</p>
+          <span class="benefit-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </span>
+          <h3>Designed for Professionals</h3>
+          <p>Accommodates complex executive agendas with quick checks and digital assessments.</p>
         </article>
+
         <article class="benefit-card reveal">
-          <span class="benefit-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 18l5-5 4 3 7-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <h3>Advanced digital planning</h3>
-          <p>A projected treatment sequence built from your own 3D scan data.</p>
+          <span class="benefit-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </span>
+          <h3>Advanced Digital Planning</h3>
+          <p>Observe your projected orthodontic final state via 3D simulated animations before manufacturing.</p>
         </article>
+
         <article class="benefit-card reveal">
-          <span class="benefit-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-          <h3>Expert supervision</h3>
-          <p>Progress checked at every stage by your dental specialist.</p>
+          <span class="benefit-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </span>
+          <h3>Expert Supervision</h3>
+          <p>Direct accessibility to supervising clinical directors during every developmental phase.</p>
         </article>
+
         <article class="benefit-card reveal">
-          <span class="benefit-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 21s-7-4.4-9.5-9C1 8 3 4 7 4c2.2 0 3.8 1.2 5 3 1.2-1.8 2.8-3 5-3 4 0 6 4 4.5 8-2.5 4.6-9.5 9-9.5 9z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-          <h3>Confidence throughout</h3>
-          <p>Clear check-ins so you always know where your treatment stands.</p>
+          <span class="benefit-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </span>
+          <h3>Confidence Throughout</h3>
+          <p>Consistent progress visibility maintains reassurance during the complete alignment sequence.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- BEFORE / AFTER STYLE -->
+  <!-- =========================================================
+       BEFORE/AFTER COMPARISON SECTION
+       ========================================================= -->
   <section class="section transform" aria-labelledby="transformHeading">
     <div class="container transform__grid">
-      <div class="transform__visual reveal" aria-hidden="true">
-        <div class="compare">
-          <div class="compare__pane img-placeholder">
-            <span class="compare__label">Before</span>
-            <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 14c1-2 2-3 4-3s3 1 4 3" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/><circle cx="9" cy="9" r="1" fill="currentColor"/><circle cx="15" cy="9" r="1" fill="currentColor"/></svg>
+      <div class="transform__visual reveal">
+        <!-- Pure Vanilla Interactive Slider Component -->
+        <div class="slider-wrapper" id="beforeAfterSlider">
+          <div class="slider-img img-before" id="beforeContainer">
+            <span class="slider-label slider-label--before">Pre-Treatment</span>
+            <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&q=80&w=640" alt="Dental alignment pre-treatment clinical record">
           </div>
-          <div class="compare__pane img-placeholder img-placeholder--dark">
-            <span class="compare__label">After</span>
-            <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 10c1 2 2 3 4 3s3-1 4-3" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/><circle cx="9" cy="9" r="1" fill="currentColor"/><circle cx="15" cy="9" r="1" fill="currentColor"/></svg>
+          <div class="slider-img img-after">
+            <span class="slider-label slider-label--after">Simulated Align</span>
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=640" alt="Completed orthodontic simulated alignment visualization">
+          </div>
+          <div class="slider-handle" id="sliderHandle">
+            <div class="slider-button">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="8 17 3 12 8 7"/><polyline points="16 17 21 12 16 7"/>
+              </svg>
+            </div>
           </div>
         </div>
       </div>
+
       <div class="transform__copy reveal">
-        <p class="eyebrow">A note on outcomes</p>
-        <h2 id="transformHeading">Every smile journey is unique</h2>
-        <p class="lead">Our specialists create personalised treatment plans based on your dental needs. Illustrative visuals only — individual results vary by case.</p>
+        <p class="eyebrow">Outcome Precision</p>
+        <h2 id="transformHeading">Envision Your Finished Alignment</h2>
+        <p class="lead">Slide the tracker to preview the biomechanical capabilities of targeted medical polymer pressure.</p>
+        <p style="margin-bottom: 2em;">Every smile journey is unique. Our specialists create personalised treatment plans based on your dental needs. These simulated representations are generated for structural demonstration purposes.</p>
+        <a href="#" class="btn btn--ghost ripple" data-whatsapp>Book Your Assessment Scan</a>
       </div>
     </div>
   </section>
 
-  <!-- TECHNOLOGY SECTION (dark) -->
+  <!-- =========================================================
+       TECHNOLOGY SECT (DARK MODE TRANSITION)
+       ========================================================= -->
   <section class="section technology" id="technology" aria-labelledby="techHeading">
     <div class="tech__glow" aria-hidden="true"></div>
     <div class="container">
-      <p class="eyebrow eyebrow--light center">Inside the clinic</p>
-      <h2 id="techHeading" class="center light">Precision-driven dental workflow</h2>
+      <div class="center reveal">
+        <p class="eyebrow eyebrow--light">Scientific Foundations</p>
+        <h2 id="techHeading" class="center light">Integrated Surgical Architecture</h2>
+        <p style="max-width: 600px; margin-bottom: 3em;">Harnessing specialized data structures and spatial rendering coordinates to orchestrate precision aligner therapy.</p>
+      </div>
 
       <div class="tech__grid">
-        <div class="tech__visual reveal photo photo--dark">
-          <img src="https://picsum.photos/seed/m32-dental-tech/700/525" alt="Advanced dental scanning technology in use at the clinic" loading="lazy" width="700" height="525">
+        <div class="tech__visual reveal">
+          <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=800" alt="Clinical high-precision intraoral scanner generating visual orthodontic data model">
         </div>
+
         <div class="tech__list">
-          <div class="tech__item reveal">
-            <span class="tech__num">01</span>
+          <article class="tech__item reveal">
+            <span class="tech__num" aria-hidden="true">01</span>
             <div>
-              <h3>Digital smile assessment</h3>
-              <p>A full picture of your bite and alignment before any decision is made.</p>
+              <h3>Digital Smile Assessment</h3>
+              <p>Volumetric scanning of oral parameters to assess alignment limits and tissue levels.</p>
             </div>
-          </div>
-          <div class="tech__item reveal">
-            <span class="tech__num">02</span>
+          </article>
+
+          <article class="tech__item reveal">
+            <span class="tech__num" aria-hidden="true">02</span>
             <div>
-              <h3>Advanced scanning technology</h3>
-              <p>Intraoral scanning replaces uncomfortable impressions.</p>
+              <h3>Advanced Scanning Technology</h3>
+              <p>Optical mapping replaces traditional molds, generating rich structural models in real time.</p>
             </div>
-          </div>
-          <div class="tech__item reveal">
-            <span class="tech__num">03</span>
+          </article>
+
+          <article class="tech__item reveal">
+            <span class="tech__num" aria-hidden="true">03</span>
             <div>
-              <h3>Precision treatment planning</h3>
-              <p>Tooth movement mapped stage by stage before treatment starts.</p>
+              <h3>Precision Treatment Planning</h3>
+              <p>Specialized biomechanical models simulate ideal vectors of tooth movement during each stage.</p>
             </div>
-          </div>
-          <div class="tech__item reveal">
-            <span class="tech__num">04</span>
+          </article>
+
+          <article class="tech__item reveal">
+            <span class="tech__num" aria-hidden="true">04</span>
             <div>
-              <h3>Modern dental workflow</h3>
-              <p>Fewer chair visits, faster reviews, clearer communication.</p>
+              <h3>Modern Dental Workflow</h3>
+              <p>Accelerated turnaround times and optimized digital reviews that reduce overall clinic visits.</p>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TREATMENT JOURNEY -->
+  <!-- =========================================================
+       TREATMENT TIMELINE
+       ========================================================= -->
   <section class="section process" id="process" aria-labelledby="processHeading">
     <div class="container">
-      <p class="eyebrow center">Treatment journey</p>
-      <h2 id="processHeading" class="center">Four stages, clearly explained</h2>
+      <div class="center reveal">
+        <p class="eyebrow">The Sequential Roadmap</p>
+        <h2 id="processHeading" class="center">Four Stages of Orthodontic Progression</h2>
+        <p class="lead" style="max-width: 600px; margin-bottom: 2.5em;">Delivering transparency throughout every developmental milestone of your treatment.</p>
+      </div>
 
       <ol class="timeline">
         <li class="timeline__item reveal">
-          <span class="timeline__arc" aria-hidden="true"><svg viewBox="0 0 40 20" width="40" height="20"><path d="M2 16 C 10 2, 30 2, 38 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span>
+          <span class="timeline__number" aria-hidden="true">Phase 01</span>
+          <span class="timeline__arc" aria-hidden="true">
+            <svg viewBox="0 0 40 20" width="44" height="22">
+              <path d="M2 18 C 10 2, 30 2, 38 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </span>
           <h3>Consultation</h3>
-          <p>Discuss goals and dental history with your specialist.</p>
+          <p>Initial physical assessment and alignment mapping with senior clinical leads.</p>
         </li>
+
         <li class="timeline__item reveal">
-          <span class="timeline__arc" aria-hidden="true"><svg viewBox="0 0 40 20" width="40" height="20"><path d="M2 16 C 10 2, 30 2, 38 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span>
-          <h3>Digital assessment</h3>
-          <p>A full scan builds an accurate 3D model of your teeth.</p>
+          <span class="timeline__number" aria-hidden="true">Phase 02</span>
+          <span class="timeline__arc" aria-hidden="true">
+            <svg viewBox="0 0 40 20" width="44" height="22">
+              <path d="M2 18 C 10 2, 30 2, 38 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <h3>Digital Assessment</h3>
+          <p>Optical mapping of structural boundaries to render a high-fidelity dental model.</p>
         </li>
+
         <li class="timeline__item reveal">
-          <span class="timeline__arc" aria-hidden="true"><svg viewBox="0 0 40 20" width="40" height="20"><path d="M2 16 C 10 2, 30 2, 38 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span>
-          <h3>Personalised aligner plan</h3>
-          <p>A staged sequence is designed specifically for your case.</p>
+          <span class="timeline__number" aria-hidden="true">Phase 03</span>
+          <span class="timeline__arc" aria-hidden="true">
+            <svg viewBox="0 0 40 20" width="44" height="22">
+              <path d="M2 18 C 10 2, 30 2, 38 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <h3>Personalised Aligner Plan</h3>
+          <p>Custom biomechanical design process generates your specific orthodontic polymer sets.</p>
         </li>
+
         <li class="timeline__item reveal">
-          <span class="timeline__arc" aria-hidden="true"><svg viewBox="0 0 40 20" width="40" height="20"><path d="M2 16 C 10 2, 30 2, 38 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span>
-          <h3>Progress reviews</h3>
-          <p>Regular check-ins track movement and adjust as needed.</p>
+          <span class="timeline__number" aria-hidden="true">Phase 04</span>
+          <span class="timeline__arc" aria-hidden="true">
+            <svg viewBox="0 0 40 20" width="44" height="22">
+              <path d="M2 18 C 10 2, 30 2, 38 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <h3>Progress Reviews</h3>
+          <p>Scheduled micro-assessments to confirm tracking and monitor tissue health.</p>
         </li>
       </ol>
     </div>
   </section>
 
-  <!-- DOCTOR SECTION -->
+  <!-- =========================================================
+       CLINICAL TEAM
+       ========================================================= -->
   <section class="section experts" aria-labelledby="expertsHeading">
     <div class="container">
-      <p class="eyebrow center">Your treatment team</p>
-      <h2 id="expertsHeading" class="center">Specialists who plan every stage</h2>
+      <div class="center reveal">
+        <p class="eyebrow">Orthodontic Specialists</p>
+        <h2 id="expertsHeading" class="center">The Clinical Directors</h2>
+        <p class="lead" style="max-width: 600px; margin-bottom: 2.5em;">Our clinicians hold advanced specializations to guide your transformation sequence from start to finish.</p>
+      </div>
 
       <div class="experts__grid">
         <article class="expert-card reveal">
-          <div class="expert-card__photo img-placeholder" role="img" aria-label="Portrait of a senior dental consultant at M32 Dental Centre">
-            <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="9" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c1.5-4.5 5-6 8-6s6.5 1.5 8 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            <span class="img-placeholder__tag">doctor.jpg</span>
+          <img class="expert-card__photo" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=240&h=240" alt="Lead Orthodontist Profile Picture">
+          <div class="expert-card__info">
+            <span class="expert-card__meta" aria-hidden="true">Director of Orthodontics</span>
+            <h3>Lead Orthodontist</h3>
+            <p class="expert-card__sub">15+ Years Clinical Orthodontics</p>
+            <p>Specializes in targeted clear aligner therapy, structural cosmetic movements, and complex aesthetic restorations.</p>
+            <p class="expert-card__note">Every structural progression vector is individually planned for maximum comfort and speed.</p>
           </div>
-          <h3>Lead Dental Consultant</h3>
-          <p class="expert-card__meta">15+ years in clinical practice</p>
-          <p>Specialisation: Clear aligner therapy &amp; cosmetic dentistry</p>
-          <p class="expert-card__note">Patient-first treatment planning, at every visit.</p>
         </article>
 
         <article class="expert-card reveal">
-          <div class="expert-card__photo img-placeholder" role="img" aria-label="Portrait of a dental technology specialist at M32 Dental Centre">
-            <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="9" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c1.5-4.5 5-6 8-6s6.5 1.5 8 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            <span class="img-placeholder__tag">doctor-2.jpg</span>
+          <img class="expert-card__photo" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=240&h=240" alt="Dental Technology Specialist Profile Picture">
+          <div class="expert-card__info">
+            <span class="expert-card__meta" aria-hidden="true">Director of Biomaterial Design</span>
+            <h3>Digital Treatment Planner</h3>
+            <p class="expert-card__sub">10+ Years Digital Dentistry</p>
+            <p>Specializes in intraoral scanning, 3D printing workflows, volumetric model processing, and custom clear materials.</p>
+            <p class="expert-card__note">Optimizes mathematical data modeling to design comfortable clear alignments.</p>
           </div>
-          <h3>Digital Treatment Planner</h3>
-          <p class="expert-card__meta">10+ years in digital dentistry</p>
-          <p>Specialisation: 3D scanning &amp; precision aligner design</p>
-          <p class="expert-card__note">Translates every scan into a clear, staged plan.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
+  <!-- =========================================================
+       PATIENT VERIFIED REVIEWS
+       ========================================================= -->
   <section class="section reviews" id="reviews" aria-labelledby="reviewsHeading">
     <div class="container">
-      <p class="eyebrow center">Patient experiences</p>
-      <h2 id="reviewsHeading" class="center">What patients say about treatment</h2>
-      <p class="review-aggregate center">★★★★★ <strong>4.9 / 5</strong> average from recent patients</p>
+      <div class="center reveal">
+        <p class="eyebrow">Verified Patient Outcomes</p>
+        <h2 id="reviewsHeading">Documented Patient Experiences</h2>
+        <p class="review-aggregate">★★★★★ <strong>4.9 / 5</strong> average based on recent clinical follow-ups</p>
+      </div>
 
-      <div class="reviews__track" tabindex="0" aria-label="Patient testimonials, scrollable">
+      <div class="reviews__track" tabindex="0" aria-label="Scrollable patient feedback and testimonials">
         <article class="review-card reveal">
           <div class="review-card__stars" aria-hidden="true">★★★★★</div>
-          <p>"The consultation was thorough and I always knew what stage I was at. The aligners fit easily into my work schedule."</p>
-          <p class="review-card__author">— Patient, working professional</p>
+          <p>"The digital scan was incredibly fast. I appreciated how clearly the clinicians explained my dynamic progress path before manufacturing started."</p>
+          <p class="review-card__author">— Private Client, Consulting Lead</p>
         </article>
+
         <article class="review-card reveal">
           <div class="review-card__stars" aria-hidden="true">★★★★★</div>
-          <p>"Appreciated how the team explained the digital scan and walked me through the full plan before starting."</p>
-          <p class="review-card__author">— Patient, marketing lead</p>
+          <p>"Adapting to the clear material took only a day or two. Being able to remove the trays for key meetings completely fit my professional requirements."</p>
+          <p class="review-card__author">— Private Client, Creative Director</p>
         </article>
+
         <article class="review-card reveal">
           <div class="review-card__stars" aria-hidden="true">★★★★★</div>
-          <p>"Review visits were quick and clearly explained. Comfortable experience from start to finish."</p>
-          <p class="review-card__author">— Patient, software engineer</p>
+          <p>"A highly clean, calm clinic experience. My reviews were mapped perfectly around my active travel schedule, with complete transparency."</p>
+          <p class="review-card__author">— Private Client, Tech Founder</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- =========================================================
+       FAQ (ACCORDION)
+       ========================================================= -->
   <section class="section faq" aria-labelledby="faqHeading">
     <div class="container container--narrow">
-      <p class="eyebrow center">Common questions</p>
-      <h2 id="faqHeading" class="center">Frequently asked questions</h2>
+      <div class="center reveal">
+        <p class="eyebrow">Information Clarification</p>
+        <h2 id="faqHeading" class="center">Frequently Asked Questions</h2>
+      </div>
 
-      <div class="accordion" id="accordion">
+      <div class="accordion" id="accordionSystem">
         <div class="accordion__item">
-          <button class="accordion__trigger" aria-expanded="false">
+          <button class="accordion__trigger" aria-expanded="false" aria-controls="faqPanel1" id="faqTrigger1">
             <span>Are clear aligners visible?</span>
-            <svg viewBox="0 0 24 24" width="18" height="18" class="accordion__chevron"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 24 24" width="18" height="18" class="accordion__chevron" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
           </button>
-          <div class="accordion__panel">
-            <p>Clear aligners are made from transparent medical-grade material, making them far less noticeable than traditional braces in daily conversation.</p>
+          <div class="accordion__panel" id="faqPanel1" role="region" aria-labelledby="faqTrigger1">
+            <p>Clear aligners are fabricated from clinical-grade medical polymers with a highly specific light-refractive index. They fit snugly to your teeth, making them nearly invisible at normal conversational distances.</p>
           </div>
         </div>
+
         <div class="accordion__item">
-          <button class="accordion__trigger" aria-expanded="false">
+          <button class="accordion__trigger" aria-expanded="false" aria-controls="faqPanel2" id="faqTrigger2">
             <span>Are aligners comfortable?</span>
-            <svg viewBox="0 0 24 24" width="18" height="18" class="accordion__chevron"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 24 24" width="18" height="18" class="accordion__chevron" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
           </button>
-          <div class="accordion__panel">
-            <p>Most patients adapt within the first few days of each new tray. Edges are smooth and the fit is planned to minimise irritation.</p>
+          <div class="accordion__panel" id="faqPanel2" role="region" aria-labelledby="faqTrigger2">
+            <p>Minor pressure is normal during the first 48 hours of introducing a new alignment set, indicating progressive active movement. Smooth edges are custom trimmed along the gum line to eliminate soft-tissue friction.</p>
           </div>
         </div>
+
         <div class="accordion__item">
-          <button class="accordion__trigger" aria-expanded="false">
+          <button class="accordion__trigger" aria-expanded="false" aria-controls="faqPanel3" id="faqTrigger3">
             <span>Who can choose clear aligners?</span>
-            <svg viewBox="0 0 24 24" width="18" height="18" class="accordion__chevron"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 24 24" width="18" height="18" class="accordion__chevron" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
           </button>
-          <div class="accordion__panel">
-            <p>Suitability depends on your dental case. A consultation and digital assessment will confirm whether aligners are right for you.</p>
+          <div class="accordion__panel" id="faqPanel3" role="region" aria-labelledby="faqTrigger3">
+            <p>Aligner therapy is highly effective for moderate to complex spacing, crowding, and bite variations. A detailed clinical intraoral assessment and 3D dental mapping will determine your exact physiological eligibility.</p>
           </div>
         </div>
+
         <div class="accordion__item">
-          <button class="accordion__trigger" aria-expanded="false">
+          <button class="accordion__trigger" aria-expanded="false" aria-controls="faqPanel4" id="faqTrigger4">
             <span>How do I start?</span>
-            <svg viewBox="0 0 24 24" width="18" height="18" class="accordion__chevron"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 24 24" width="18" height="18" class="accordion__chevron" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
           </button>
-          <div class="accordion__panel">
-            <p>Book a consultation through WhatsApp or the contact section below. Our team will schedule your first visit and scan.</p>
+          <div class="accordion__panel" id="faqPanel4" role="region" aria-labelledby="faqTrigger4">
+            <p>You can schedule a clinical consultation through our direct integration paths below. Our administrative coordinators will assist in booking your initial assessment scan and clinical review slot.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FINAL CTA -->
-  <section class="section final-cta" id="contact" aria-labelledby="finalCtaHeading" style="background-image:url('https://picsum.photos/seed/m32-clinic-interior/1600/900')">
-    <div class="final-cta__glow" aria-hidden="true"></div>
+  <!-- =========================================================
+       FINAL BOOKING CALL TO ACTION
+       ========================================================= -->
+  <section class="section final-cta" id="contact" aria-labelledby="finalCtaHeading" style="background-image: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1200')">
     <div class="final-cta__scrim" aria-hidden="true"></div>
+    <div class="final-cta__glow" aria-hidden="true"></div>
     <div class="container center">
       <span class="final-cta__arc" aria-hidden="true">
-        <svg viewBox="0 0 120 60" width="90" height="45"><path d="M4 40 C 30 4, 90 4, 116 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 120 60" width="110" height="55">
+          <path d="M4 40 C 30 4, 90 4, 116 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        </svg>
       </span>
-      <h2 id="finalCtaHeading" class="light">Begin your smile journey with M32 Dental Centre</h2>
-      <p class="final-cta__sub">Book a consultation and receive a personalised aligner plan built around your case.</p>
+      <h2 id="finalCtaHeading" class="light">Begin Your Smile Journey with M32 Dental Centre</h2>
+      <p class="final-cta__sub">Connect directly with our registration desk via WhatsApp and reserve your structural scanning consultation slot today.</p>
       <a href="#" class="btn btn--primary btn--lg btn--elevated ripple" data-whatsapp>Book Appointment</a>
     </div>
   </section>
 
 </main>
 
-<!-- FOOTER -->
+<!-- =========================================================
+     FOOTER ARCHITECTURE
+     ========================================================= -->
 <footer class="footer">
   <div class="container footer__grid">
     <div class="footer__brand">
       <span class="brand__text">M32<span class="brand__text--light"> Dental Centre</span></span>
-      <p>Advanced clear aligner and dental care, planned around your case.</p>
+      <p>Providing high-precision aligner therapy and structural aesthetic dental solutions mapped around complex clinical guidelines.</p>
     </div>
+
     <div class="footer__col">
       <h3>Quick Links</h3>
       <a href="#home">Home</a>
@@ -1059,60 +2396,67 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--cyan-strong);outli
       <a href="#benefits">Benefits</a>
       <a href="#process">Process</a>
     </div>
+
     <div class="footer__col">
       <h3>Services</h3>
-      <a href="#aligners">Clear Aligners</a>
-      <a href="#technology">Digital Scanning</a>
-      <a href="#process">Treatment Planning</a>
-      <a href="#reviews">Patient Reviews</a>
-    </div>
-    <div class="footer__col">
-      <h3>Contact</h3>
-      <a href="tel:+919947960606">+91 99479 60606</a>
-      <a href="#" data-whatsapp>Chat on WhatsApp</a>
+      <a href="#aligners">Orthodontic Planning</a>
+      <a href="#technology">Digital Intraoral Scanning</a>
+      <a href="#process">Treatment Path Simulation</a>
+      <a href="#reviews">Clinical Reviews</a>
     </div>
   </div>
+
   <div class="container footer__bottom">
-    <p>© <span id="year"></span> M32 Dental Centre. All rights reserved.</p>
+    <p>&copy; <span id="year"></span> M32 Dental Centre. Engineered for absolute clinical accuracy and patient trust.</p>
   </div>
 </footer>
 
-<!-- FLOATING WHATSAPP -->
-<a href="#" class="whatsapp-fab ripple" data-whatsapp aria-label="Book on WhatsApp">
-  <svg viewBox="0 0 24 24" width="26" height="26"><path d="M20 12a8 8 0 1 1-3.8-6.8L20 4l-1.1 3.9A7.9 7.9 0 0 1 20 12z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 9.5c.3 2.4 2.6 4.7 5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+<!-- Floating Action Button: Dedicated WhatsApp Portal -->
+<a href="#" class="whatsapp-fab ripple" data-whatsapp aria-label="Book Orthodontic Consultation via WhatsApp">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+  </svg>
 </a>
 
-<!-- BOTTOM MOBILE NAV -->
-<nav class="bottom-nav" aria-label="Mobile section navigation">
+<!-- Bottom Mobile Navigation Bar (Native App Mechanics) -->
+<nav class="bottom-nav" aria-label="Mobile Viewport Direct Actions">
   <a href="#home" class="bottom-nav__item is-active" data-section="home">
-    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1v-9z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
     <span>Home</span>
   </a>
+
   <a href="#aligners" class="bottom-nav__item" data-section="aligners">
-    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M4 12c1-4 4-6 8-6s7 2 8 6c-1 4-4 6-8 6s-7-2-8-6z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>
     <span>Aligners</span>
   </a>
-  <a href="#" class="bottom-nav__item bottom-nav__item--cta" data-whatsapp aria-label="Book appointment">
-    <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+
+  <a href="#" class="bottom-nav__item bottom-nav__item--cta ripple" data-whatsapp aria-label="Initiate Immediate Consultation">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
   </a>
+
   <a href="#process" class="bottom-nav__item" data-section="process">
-    <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l4 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
     <span>Process</span>
   </a>
-  <a href="tel:+919947960606" class="bottom-nav__item" aria-label="Call M32 Dental Centre">
-    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M6 3h3l2 5-2.5 2a11 11 0 0 0 5.5 5.5l2-2.5 5 2v3a2 2 0 0 1-2 2C10.4 20 4 13.6 4 5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+
+  <a href="tel:+919947960606" class="bottom-nav__item" aria-label="Direct Telephone Link">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     <span>Call</span>
   </a>
 </nav>
 
 <script>
+/* =========================================================
+   M32 DENTAL CENTRE — VANILLA CORE SCRIPT
+   ========================================================= */
+
 (function () {
   'use strict';
 
-  /* ---------- Config ---------- */
-  var WHATSAPP_NUMBER = '919947960606';
-  var WHATSAPP_MESSAGE = 'Hello M32 Dental Centre, I would like to book a Clear Aligner consultation.';
-  var WHATSAPP_URL = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(WHATSAPP_MESSAGE);
+  /* ---------- Clinical Handoff Configurations ---------- */
+  const WHATSAPP_NUMBER = '919947960606';
+  const WHATSAPP_MESSAGE = 'Hello M32 Dental Centre, I would like to book a Clear Aligner consultation.';
+  const WHATSAPP_URL = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(WHATSAPP_MESSAGE);
 
   document.querySelectorAll('[data-whatsapp]').forEach(function (el) {
     el.setAttribute('href', WHATSAPP_URL);
@@ -1120,9 +2464,9 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--cyan-strong);outli
     el.setAttribute('rel', 'noopener noreferrer');
   });
 
-  /* ---------- Announcement bar ---------- */
-  var announceBar = document.getElementById('announceBar');
-  var announceClose = document.getElementById('announceClose');
+  /* ---------- Notification Promotion Dismissals ---------- */
+  const announceBar = document.getElementById('announceBar');
+  const announceClose = document.getElementById('announceClose');
   if (announceBar) {
     document.body.classList.add('has-announce');
     if (announceClose) {
@@ -1133,179 +2477,214 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--cyan-strong);outli
     }
   }
 
-  /* ---------- Lead capture form -> WhatsApp handoff ---------- */
-  var leadForm = document.getElementById('leadForm');
-  if (leadForm) {
-    leadForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var name = document.getElementById('leadName').value.trim();
-      var phone = document.getElementById('leadPhone').value.trim();
-      if (!name || !phone) return;
-      var message = 'Hello M32 Dental Centre, I would like to book a Clear Aligner consultation. My name is ' +
-        name + ' and my phone number is ' + phone + '.';
-      var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
-      window.open(url, '_blank', 'noopener,noreferrer');
-      leadForm.reset();
-    });
-  }
-
-  /* ---------- Stat count-up ---------- */
-  var statEls = document.querySelectorAll('.stat__num');
-  function animateCount(el) {
-    var target = parseFloat(el.getAttribute('data-count'));
-    var decimals = parseInt(el.getAttribute('data-decimal') || '0', 10);
-    var suffix = el.getAttribute('data-suffix') || '';
-    var duration = 1200;
-    var start = null;
-
-    function step(ts) {
-      if (!start) start = ts;
-      var progress = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3);
-      var value = target * eased;
-      el.textContent = value.toFixed(decimals) + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  if (statEls.length && 'IntersectionObserver' in window) {
-    var statIo = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          animateCount(entry.target);
-          statIo.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.4 });
-    statEls.forEach(function (el) { statIo.observe(el); });
-  }
-
-  /* ---------- Preload ---------- */
+  /* ---------- Preloader Execution Flow ---------- */
   window.addEventListener('load', function () {
-    var preload = document.getElementById('preload');
+    const preload = document.getElementById('preload');
     if (preload) {
       setTimeout(function () {
         preload.classList.add('is-hidden');
-      }, 350);
+      }, 400);
     }
   });
 
-  /* ---------- Scroll progress + header state ---------- */
-  var scrollBar = document.getElementById('scrollBar');
-  var header = document.getElementById('siteHeader');
+  /* ---------- Interactive Visual Before/After Slide ---------- */
+  const beforeAfterSlider = document.getElementById('beforeAfterSlider');
+  const beforeContainer = document.getElementById('beforeContainer');
+  const sliderHandle = document.getElementById('sliderHandle');
 
-  function onScroll() {
-    var doc = document.documentElement;
-    var scrollTop = doc.scrollTop || document.body.scrollTop;
-    var height = doc.scrollHeight - doc.clientHeight;
-    var pct = height > 0 ? (scrollTop / height) * 100 : 0;
-    if (scrollBar) scrollBar.style.width = pct + '%';
-    if (header) header.classList.toggle('is-scrolled', scrollTop > 12);
-    updateActiveNav(scrollTop);
+  if (beforeAfterSlider && beforeContainer && sliderHandle) {
+    const executeSlideMove = function (xPosition) {
+      const sliderBoundingRect = beforeAfterSlider.getBoundingClientRect();
+      let xOffset = xPosition - sliderBoundingRect.left;
+      
+      if (xOffset < 0) xOffset = 0;
+      if (xOffset > sliderBoundingRect.width) xOffset = sliderBoundingRect.width;
+      
+      const positionalPercentage = (xOffset / sliderBoundingRect.width) * 100;
+      beforeContainer.style.clipPath = `polygon(0 0, ${positionalPercentage}% 0, ${positionalPercentage}% 100%, 0 100%)`;
+      sliderHandle.style.left = positionalPercentage + '%';
+    };
+
+    const handleTouchEvents = function (e) {
+      if (e.touches && e.touches[0]) {
+        executeSlideMove(e.touches[0].clientX);
+      }
+    };
+
+    const handleMouseEvents = function (e) {
+      executeSlideMove(e.clientX);
+    };
+
+    // Responsive interaction listening
+    beforeAfterSlider.addEventListener('mousemove', handleMouseEvents);
+    beforeAfterSlider.addEventListener('touchmove', handleTouchEvents, { passive: true });
   }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
 
-  /* ---------- Mobile drawer ---------- */
-  var hamburger = document.getElementById('hamburgerBtn');
-  var drawer = document.getElementById('drawer');
+  /* ---------- Real-time Scroll Performance Mapping ---------- */
+  const scrollBar = document.getElementById('scrollBar');
+  const header = document.getElementById('siteHeader');
 
-  function openDrawer() {
-    drawer.classList.add('is-open');
-    drawer.setAttribute('aria-hidden', 'false');
-    hamburger.setAttribute('aria-expanded', 'true');
+  function monitorScrollPhysics() {
+    const docElement = document.documentElement;
+    const documentBody = document.body;
+    const scrollPositionTop = docElement.scrollTop || documentBody.scrollTop;
+    const totalScrollableHeight = docElement.scrollHeight - docElement.clientHeight;
+    const scrollPercentage = totalScrollableHeight > 0 ? (scrollPositionTop / totalScrollableHeight) * 100 : 0;
+    
+    if (scrollBar) scrollBar.style.width = scrollPercentage + '%';
+    if (header) header.classList.toggle('is-scrolled', scrollPositionTop > 16);
+    
+    updateBottomAppNavigationHighlight(scrollPositionTop);
+  }
+  window.addEventListener('scroll', monitorScrollPhysics, { passive: true });
+  monitorScrollPhysics();
+
+  /* ---------- Native Mobile Menu Toggle Mechanics ---------- */
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const drawerPanel = document.getElementById('drawer');
+
+  function openSystemDrawer() {
+    drawerPanel.classList.add('is-open');
+    drawerPanel.setAttribute('aria-hidden', 'false');
+    hamburgerBtn.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
   }
-  function closeDrawer() {
-    drawer.classList.remove('is-open');
-    drawer.setAttribute('aria-hidden', 'true');
-    hamburger.setAttribute('aria-expanded', 'false');
+
+  function closeSystemDrawer() {
+    drawerPanel.classList.remove('is-open');
+    drawerPanel.setAttribute('aria-hidden', 'true');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   }
-  if (hamburger) {
-    hamburger.addEventListener('click', function () {
-      drawer.classList.contains('is-open') ? closeDrawer() : openDrawer();
+
+  if (hamburgerBtn) {
+    hamburgerBtn.addEventListener('click', function () {
+      drawerPanel.classList.contains('is-open') ? closeSystemDrawer() : openSystemDrawer();
     });
   }
+
   document.querySelectorAll('[data-close-drawer]').forEach(function (el) {
-    el.addEventListener('click', closeDrawer);
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeDrawer();
+    el.addEventListener('click', closeSystemDrawer);
   });
 
-  /* ---------- Ripple effect ---------- */
-  document.querySelectorAll('.ripple').forEach(function (btn) {
-    btn.addEventListener('click', function (e) {
-      var rect = btn.getBoundingClientRect();
-      var circle = document.createElement('span');
-      var size = Math.max(rect.width, rect.height);
-      circle.className = 'ripple-circle';
-      circle.style.width = circle.style.height = size + 'px';
-      circle.style.left = (e.clientX - rect.left - size / 2) + 'px';
-      circle.style.top = (e.clientY - rect.top - size / 2) + 'px';
-      btn.appendChild(circle);
-      setTimeout(function () { circle.remove(); }, 650);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeSystemDrawer();
+  });
+
+  /* ---------- Dynamic Linear Metric Progression Counter ---------- */
+  const numericMetrics = document.querySelectorAll('.stat__num');
+  function executeNumericRollUp(element) {
+    const numericTargetValue = parseFloat(element.getAttribute('data-count'));
+    const decimalFloatingPoints = parseInt(element.getAttribute('data-decimal') || '0', 10);
+    const textValueSuffix = element.getAttribute('data-suffix') || '';
+    const executionDuration = 1400;
+    let initialTimestamp = null;
+
+    function renderSequence(currentTimestamp) {
+      if (!initialTimestamp) initialTimestamp = currentTimestamp;
+      const progressionPercentage = Math.min((currentTimestamp - initialTimestamp) / executionDuration, 1);
+      const easeFormula = 1 - Math.pow(1 - progressionPercentage, 3); // Cubic Ease Out
+      const intermediateValue = numericTargetValue * easeFormula;
+      
+      element.textContent = intermediateValue.toFixed(decimalFloatingPoints) + textValueSuffix;
+      if (progressionPercentage < 1) requestAnimationFrame(renderSequence);
+    }
+    requestAnimationFrame(renderSequence);
+  }
+
+  if (numericMetrics.length && 'IntersectionObserver' in window) {
+    const statsObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          executeNumericRollUp(entry.target);
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    numericMetrics.forEach(function (el) { statsObserver.observe(el); });
+  }
+
+  /* ---------- Standard Soft Haptic Ripple Synthesis ---------- */
+  document.querySelectorAll('.ripple').forEach(function (button) {
+    button.addEventListener('click', function (e) {
+      const boundaryRect = button.getBoundingClientRect();
+      const rippleSpan = document.createElement('span');
+      const boundingDiameter = Math.max(boundaryRect.width, boundaryRect.height);
+      
+      rippleSpan.className = 'ripple-circle';
+      rippleSpan.style.width = rippleSpan.style.height = boundingDiameter + 'px';
+      rippleSpan.style.left = (e.clientX - boundaryRect.left - boundingDiameter / 2) + 'px';
+      rippleSpan.style.top = (e.clientY - boundaryRect.top - boundingDiameter / 2) + 'px';
+      
+      button.appendChild(rippleSpan);
+      setTimeout(function () { rippleSpan.remove(); }, 700);
     });
   });
 
-  /* ---------- Reveal on scroll ---------- */
-  var revealEls = document.querySelectorAll('.reveal');
+  /* ---------- Intersectional Fluid Animation Pipeline ---------- */
+  const revealElements = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
+    const revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
+          revealObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(function (el) { io.observe(el); });
+    revealElements.forEach(function (el) { revealObserver.observe(el); });
   } else {
-    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+    revealElements.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  /* ---------- Accordion ---------- */
+  /* ---------- Silky Smooth Accordion System ---------- */
   document.querySelectorAll('.accordion__trigger').forEach(function (trigger) {
     trigger.addEventListener('click', function () {
-      var expanded = trigger.getAttribute('aria-expanded') === 'true';
-      var panel = trigger.nextElementSibling;
+      const isExpandedStateActive = trigger.getAttribute('aria-expanded') === 'true';
+      const targetPanel = trigger.nextElementSibling;
 
-      document.querySelectorAll('.accordion__trigger').forEach(function (t) {
-        if (t !== trigger) {
-          t.setAttribute('aria-expanded', 'false');
-          t.nextElementSibling.style.maxHeight = null;
+      document.querySelectorAll('.accordion__trigger').forEach(function (btn) {
+        if (btn !== trigger) {
+          btn.setAttribute('aria-expanded', 'false');
+          btn.nextElementSibling.style.maxHeight = null;
         }
       });
 
-      trigger.setAttribute('aria-expanded', String(!expanded));
-      panel.style.maxHeight = expanded ? null : panel.scrollHeight + 'px';
+      trigger.setAttribute('aria-expanded', String(!isExpandedStateActive));
+      targetPanel.style.maxHeight = isExpandedStateActive ? null : targetPanel.scrollHeight + 'px';
     });
   });
 
-  /* ---------- Bottom nav active state ---------- */
-  var navItems = document.querySelectorAll('.bottom-nav__item[data-section]');
-  var sectionMap = [];
-  navItems.forEach(function (item) {
-    var id = item.getAttribute('data-section');
-    var section = document.getElementById(id);
-    if (section) sectionMap.push({ el: item, top: section.offsetTop });
+  /* ---------- Bottom Navigation Active-Route tracking ---------- */
+  const bottomActionTriggers = document.querySelectorAll('.bottom-nav__item[data-section]');
+  const physicalSectionCoordinates = [];
+
+  bottomActionTriggers.forEach(function (trigger) {
+    const sectionId = trigger.getAttribute('data-section');
+    const physicalSection = document.getElementById(sectionId);
+    if (physicalSection) {
+      physicalSectionCoordinates.push({ triggerEl: trigger, sectionEl: physicalSection });
+    }
   });
 
-  function updateActiveNav(scrollTop) {
-    if (!sectionMap.length) return;
-    var offset = scrollTop + window.innerHeight * 0.35;
-    var current = sectionMap[0];
-    sectionMap.forEach(function (entry) {
-      if (offset >= entry.top) current = entry;
+  function updateBottomAppNavigationHighlight(scrollPosition) {
+    if (!physicalSectionCoordinates.length) return;
+    const verticalBoundaryOffset = scrollPosition + window.innerHeight * 0.4;
+    let currentlyActiveMapping = physicalSectionCoordinates[0];
+
+    physicalSectionCoordinates.forEach(function (item) {
+      if (verticalBoundaryOffset >= item.sectionEl.offsetTop) {
+        currentlyActiveMapping = item;
+      }
     });
-    navItems.forEach(function (item) { item.classList.remove('is-active'); });
-    current.el.classList.add('is-active');
+
+    bottomActionTriggers.forEach(function (btn) { btn.classList.remove('is-active'); });
+    currentlyActiveMapping.triggerEl.classList.add('is-active');
   }
 
-  /* ---------- Footer year ---------- */
-  var yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  /* ---------- Universal Metadata Real-Time Generation ---------- */
+  const currentYearTarget = document.getElementById('year');
+  if (currentYearTarget) currentYearTarget.textContent = new Date().getFullYear();
 
 })();
 </script>

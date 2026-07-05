@@ -12,6 +12,66 @@
     el.setAttribute('rel', 'noopener noreferrer');
   });
 
+  /* ---------- Announcement bar ---------- */
+  var announceBar = document.getElementById('announceBar');
+  var announceClose = document.getElementById('announceClose');
+  if (announceBar) {
+    document.body.classList.add('has-announce');
+    if (announceClose) {
+      announceClose.addEventListener('click', function () {
+        announceBar.classList.add('is-hidden');
+        document.body.classList.remove('has-announce');
+      });
+    }
+  }
+
+  /* ---------- Lead capture form -> WhatsApp handoff ---------- */
+  var leadForm = document.getElementById('leadForm');
+  if (leadForm) {
+    leadForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = document.getElementById('leadName').value.trim();
+      var phone = document.getElementById('leadPhone').value.trim();
+      if (!name || !phone) return;
+      var message = 'Hello M32 Dental Centre, I would like to book a Clear Aligner consultation. My name is ' +
+        name + ' and my phone number is ' + phone + '.';
+      var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+      window.open(url, '_blank', 'noopener,noreferrer');
+      leadForm.reset();
+    });
+  }
+
+  /* ---------- Stat count-up ---------- */
+  var statEls = document.querySelectorAll('.stat__num');
+  function animateCount(el) {
+    var target = parseFloat(el.getAttribute('data-count'));
+    var decimals = parseInt(el.getAttribute('data-decimal') || '0', 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1200;
+    var start = null;
+
+    function step(ts) {
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var value = target * eased;
+      el.textContent = value.toFixed(decimals) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if (statEls.length && 'IntersectionObserver' in window) {
+    var statIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          statIo.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    statEls.forEach(function (el) { statIo.observe(el); });
+  }
+
   /* ---------- Preload ---------- */
   window.addEventListener('load', function () {
     var preload = document.getElementById('preload');
